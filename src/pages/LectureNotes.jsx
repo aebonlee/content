@@ -53,7 +53,6 @@ export default function LectureNotes() {
                   <div className="note__head">
                     <span className="note__no mono">{m.no}-{li + 1}</span>
                     <h3 className="note__title">{l.title}</h3>
-                    <span className="note__min mono">{l.minutes}분</span>
                   </div>
 
                   {l.objectives?.length > 0 && (

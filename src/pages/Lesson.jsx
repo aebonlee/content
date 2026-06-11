@@ -31,7 +31,7 @@ export default function Lesson() {
       </p>
       <h1 className="lesson__title">{lesson.title}</h1>
       <p className="lesson__meta mono">
-        <Icon name="fa-regular fa-clock" /> {lesson.moduleTime} · {lesson.minutes}분 세션
+        <Icon name="fa-regular fa-clock" /> {lesson.moduleTime} · {lesson.moduleNo}교시
       </p>
 
       {/* 학습목표 */}

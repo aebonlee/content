@@ -37,7 +37,6 @@ export default function Curriculum() {
                       </span>
                     </span>
                     <span className="lesson-row__meta mono">
-                      {l.minutes}분
                       <Icon name="fa-solid fa-chevron-right" className="lesson-row__arrow" />
                     </span>
                   </Link>

@@ -124,7 +124,7 @@ export default function Home() {
 
       {/* --- 도장깨기 미리보기 --- */}
       <Section eyeline="STAMP RALLY" title="듣지 말고, 만들어 보세요" wash
-               lead="워크숍을 8개 미션으로 쪼갰습니다. 직접 만들어 도장을 찍으면 내용이 손에 남습니다.">
+               lead="7개 모듈을 7개 미션으로. 모듈마다 하나씩 직접 만들어 도장을 찍으면 내용이 손에 남습니다.">
         <div className="stamp-strip">
           {stamps.map((s) => (
             <Link key={s.id} to="/stamps" className="stamp-chip" title={s.mission}>

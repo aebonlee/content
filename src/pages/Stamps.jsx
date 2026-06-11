@@ -6,7 +6,7 @@ import Reveal from '../components/Reveal'
 import Highlighter from '../components/Highlighter'
 import Icon from '../components/Icon'
 
-// 도장깨기 — 대면 워크숍에서 직접 만들어 보는 8개 미션.
+// 도장깨기 — 7개 모듈 = 7개 미션. 모듈마다 핵심 결과물 1개를 직접 만든다.
 // 로그인 없이 브라우저(localStorage)에 진행 상태를 저장한다.
 const STORE_KEY = 'content.stamps.v1'
 
@@ -42,7 +42,7 @@ export default function Stamps() {
     <Section
       eyeline="STAMP RALLY"
       title="도장깨기"
-      lead="워크숍은 듣고 끝내지 않습니다. 8개의 미션을 직접 만들어 도장을 찍으세요. 손으로 남긴 결과물이 강의를 체화합니다."
+      lead={`워크숍은 듣고 끝내지 않습니다. 모듈마다 1개씩, ${stamps.length}개의 미션을 직접 만들어 도장을 찍으세요. 손으로 남긴 결과물이 강의를 체화합니다.`}
     >
       {/* 진행 요약 */}
       <div className="stamp-summary">
@@ -63,7 +63,7 @@ export default function Stamps() {
         <Reveal className="stamp-clear">
           <span className="stamp-clear__seal" aria-hidden><Icon name="fa-solid fa-award" /></span>
           <p>
-            8개 미션을 모두 <Highlighter>완성</Highlighter>했습니다. 이제 당신만의 홍보 자동화 루틴이 손에 남았습니다.
+            {stamps.length}개 미션을 모두 <Highlighter>완성</Highlighter>했습니다. 이제 당신만의 홍보 자동화 루틴이 손에 남았습니다.
           </p>
           <Link to="/gallery" className="btn btn-accent">결과물 갤러리 보기</Link>
         </Reveal>

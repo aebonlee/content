@@ -312,6 +312,8 @@ main { flex: 1; }
 .lecture__rail-list { list-style: none; display: flex; flex-direction: column; gap: .2rem; border-left: 2px solid var(--paper-d); }
 .lecture__rail-list a { display: flex; flex-direction: column; gap: .1rem; padding: .55rem .9rem; margin-left: -2px; border-left: 2px solid transparent; color: var(--ink-70); transition: all var(--duration) var(--ease); }
 .lecture__rail-list a:hover { border-left-color: var(--accent); color: var(--ink); background: var(--wash); }
+.lecture__rail-list a.is-active { border-left-color: var(--pigment); background: var(--wash); color: var(--ink); }
+.lecture__rail-list a.is-active .lecture__rail-name { color: var(--pigment); font-weight: 700; }
 .lecture__rail-time { font-size: .72rem; color: var(--pigment); }
 .lecture__rail-name { font-size: .86rem; font-weight: 600; }
 

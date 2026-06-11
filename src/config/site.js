@@ -24,8 +24,21 @@ export const course = {
     online: '2026.06.26 — 사전 온라인 학습',
     offline: '2026.09.30(금) 09:00–18:00 — 집합 교육',
     place: '휴넷캠퍼스 비전룸',
+    lunch: '11:50–13:00 점심',
     note: '오프라인 필수 참석(출석 80% 이상) · 선착순 30명',
   },
+  // 50분 단위 8교시 시간표 (교시 사이 10분 휴식, 점심 11:50–13:00)
+  periods: [
+    { label: '1교시', time: '09:00–09:50', part: 1 },
+    { label: '2교시', time: '10:00–10:50', part: 2 },
+    { label: '3교시', time: '11:00–11:50', part: 2 },
+    { label: '점심', time: '11:50–13:00', lunch: true },
+    { label: '4교시', time: '13:00–13:50', part: 3 },
+    { label: '5교시', time: '14:00–14:50', part: 3 },
+    { label: '6교시', time: '15:00–15:50', part: 4 },
+    { label: '7교시', time: '16:00–16:50', part: 4 },
+    { label: '8교시', time: '17:00–17:50', part: 4 },
+  ],
   badges: ['초급', '8시간', '대면 워크숍', '실습 100%'],
   // 준비물 — 대면 워크숍 참석자 안내
   bring: [
@@ -61,7 +74,7 @@ export const features = [
 // =========================================================================
 export const modules = [
   {
-    id: 'm1', no: 1, title: 'AI 홍보 실무 시작하기', time: '09:00–10:20',
+    id: 'm1', no: 1, period: '1교시', time: '09:00–09:50', title: 'AI 홍보 실무 시작하기',
     summary: '왜 지금 AI 홍보 자동화인가. 도구 지도를 그리고 프롬프트 기본기를 잡습니다.',
     lessons: [
       {
@@ -88,7 +101,7 @@ export const modules = [
     ],
   },
   {
-    id: 'm2', no: 2, title: 'AI 콘텐츠 자동화', time: '10:30–12:00',
+    id: 'm2', no: 2, period: '2–3교시', time: '10:00–11:50', title: 'AI 콘텐츠 자동화',
     summary: '카피·SNS 캡션·보도자료를 AI로. 같은 메시지를 톤 유지한 채 변주합니다.',
     lessons: [
       {
@@ -122,7 +135,7 @@ export const modules = [
     ],
   },
   {
-    id: 'm3', no: 3, title: 'AI 이미지 자동화', time: '13:00–15:00',
+    id: 'm3', no: 3, period: '4–5교시', time: '13:00–14:50', title: 'AI 이미지 자동화',
     summary: '생성형 이미지 도구로 브랜드 무드·카드뉴스·썸네일·배너를 만듭니다.',
     lessons: [
       {
@@ -156,7 +169,7 @@ export const modules = [
     ],
   },
   {
-    id: 'm4', no: 4, title: '페이지 & 워크플로 자동화 완성', time: '15:10–18:00',
+    id: 'm4', no: 4, period: '6–8교시', time: '15:00–17:50', title: '페이지 & 워크플로 자동화 완성',
     summary: '노코드로 홍보 페이지를 만들고, 콘텐츠→이미지→페이지를 하나로 잇습니다.',
     lessons: [
       {

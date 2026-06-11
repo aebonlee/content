@@ -103,13 +103,13 @@ export default function Home() {
       </Section>
 
       {/* --- 커리큘럼(타임테이블) 미리보기 --- */}
-      <Section eyeline="CURRICULUM" title="4교시, 15개 세션의 학습자료"
-               lead={`${modules.length}교시 · ${totalSessions}개 세션 · 09:00–18:00 (약 ${course.hours}시간)`}>
+      <Section eyeline="CURRICULUM" title="8교시, 15개 세션의 학습자료"
+               lead={`8교시(50분 단위) · ${modules.length}개 파트 ${totalSessions}개 세션 · 09:00–18:00`}>
         <div className="grid grid-2 module-grid">
           {modules.map((m, i) => (
             <Reveal key={m.id} className="card module" style={{ transitionDelay: `${i * 80}ms` }}>
               <span className="module__no mono">
-                <Icon name="fa-regular fa-clock" /> {m.time} · {m.no}교시
+                <Icon name="fa-regular fa-clock" /> {m.period} · {m.time}
               </span>
               <h3>{m.title}</h3>
               <p>{m.summary}</p>

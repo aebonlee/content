@@ -273,6 +273,16 @@ main { flex: 1; }
 .lesson__stamp-cta span { flex: 1; }
 
 /* =========================================================================
+   교시 시간표 (50분 단위)
+   ========================================================================= */
+.period-table { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 2rem; }
+.period-table__item { display: flex; flex-direction: column; align-items: center; gap: .12rem; background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius); padding: .45rem .75rem; box-shadow: var(--shadow-card); min-width: 86px; }
+.period-table__item.is-lunch { background: var(--wash); border-style: dashed; }
+.period-table__label { font-size: .76rem; color: var(--pigment); font-weight: 700; }
+.period-table__item.is-lunch .period-table__label { color: var(--ink-45); }
+.period-table__time { font-size: .72rem; color: var(--ink-70); }
+
+/* =========================================================================
    About
    ========================================================================= */
 .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.4rem; }

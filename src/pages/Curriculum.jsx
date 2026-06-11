@@ -10,13 +10,23 @@ export default function Curriculum() {
   return (
     <Section eyeline="CURRICULUM · 학습자료"
              title="하루 타임테이블"
-             lead={`${modules.length}교시 · ${totalSessions}개 세션 · ${course.schedule.offline.split('—')[0].trim()}`}>
+             lead={`8교시(50분 단위) · ${modules.length}개 파트 ${totalSessions}개 세션 · ${course.schedule.offline.split('—')[0].trim()}`}>
+      {/* 50분 단위 교시 시간표 */}
+      <ul className="period-table">
+        {course.periods.map((p) => (
+          <li key={p.label} className={`period-table__item${p.lunch ? ' is-lunch' : ''}`}>
+            <span className="period-table__label mono">{p.label}</span>
+            <span className="period-table__time mono">{p.time}</span>
+          </li>
+        ))}
+      </ul>
+
       <div className="curriculum">
         {modules.map((m) => (
           <Reveal key={m.id} className="module-block">
             <div className="module-block__head">
               <span className="module__no mono">
-                <Icon name="fa-regular fa-clock" /> {m.time} · {m.no}교시
+                <Icon name="fa-regular fa-clock" /> {m.period} · {m.time}
               </span>
               <h3>{m.title}</h3>
               <p>{m.summary}</p>

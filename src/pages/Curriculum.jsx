@@ -48,20 +48,10 @@ export default function Curriculum() {
         ))}
       </div>
 
-      {/* 준비물 안내 (대면 워크숍) */}
-      <div className="bring">
-        <h3 className="bring__title"><Icon name="fa-solid fa-briefcase" /> 준비물</h3>
-        <div className="grid grid-2 bring__grid">
-          {course.bring.map((b) => (
-            <Reveal key={b.label} className="bring__item">
-              <span className="bring__icon" aria-hidden><Icon name={b.icon} /></span>
-              <div>
-                <strong>{b.label}</strong>
-                <p>{b.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+      <div className="section__more">
+        <Link to="/lecture" className="btn btn-primary">
+          <Icon name="fa-solid fa-book-open" /> 시간대별 학습강의안 보기
+        </Link>
       </div>
     </Section>
   )

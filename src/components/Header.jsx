@@ -1,5 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
-import { site } from '../config/site'
+import { site, nav } from '../config/site'
 import Icon from './Icon'
 
 export default function Header() {
@@ -13,9 +13,9 @@ export default function Header() {
           {site.brand}
         </Link>
         <nav className="site-nav">
-          <NavLink to="/curriculum">커리큘럼</NavLink>
-          <NavLink to="/stamps">도장깨기</NavLink>
-          <NavLink to="/gallery">갤러리</NavLink>
+          {nav.map((n) => (
+            <NavLink key={n.to} to={n.to}>{n.label}</NavLink>
+          ))}
         </nav>
       </div>
     </header>

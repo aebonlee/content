@@ -19,12 +19,17 @@ main { flex: 1; }
 .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--ink); display: inline-flex; align-items: center; gap: .45rem; }
 .brand__mark { color: var(--pigment); }
 .brand--footer { font-size: 1.4rem; color: #fff; }
-.site-nav { display: flex; align-items: center; gap: 1.1rem; }
-.site-nav a { color: var(--ink); font-weight: 500; position: relative; }
+.site-nav { display: flex; align-items: center; gap: 1.1rem; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.site-nav::-webkit-scrollbar { display: none; }
+.site-nav a { color: var(--ink); font-weight: 500; position: relative; white-space: nowrap; }
 .site-nav a:hover { color: var(--pigment); }
 .site-nav a.active { color: var(--pigment); }
 .site-nav a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--accent); border-radius: 2px; }
 .site-nav__user { font-size: .85rem; color: var(--ink-45); }
+@media (max-width: 720px) {
+  .site-header__inner { gap: 1rem; }
+  .site-nav { gap: .85rem; font-size: .92rem; justify-content: flex-end; }
+}
 
 /* --- Hero --- */
 .hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 6vw, 4rem); overflow: hidden; }
@@ -267,7 +272,89 @@ main { flex: 1; }
 .lesson__stamp-cta strong { color: var(--accent); }
 .lesson__stamp-cta span { flex: 1; }
 
+/* =========================================================================
+   About
+   ========================================================================= */
+.badge-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.4rem; }
+.about__intro { color: var(--ink-70); font-size: 1.05rem; max-width: 48rem; margin-bottom: 2.2rem; }
+.about__cols { align-items: stretch; }
+.about__block { display: flex; flex-direction: column; }
+.about__block-title { font-size: 1.15rem; margin-bottom: .9rem; color: var(--pigment); display: flex; align-items: center; gap: .5rem; }
+.about__cta { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+.about__cta p { font-family: var(--font-display); font-size: 1.2rem; color: var(--ink); }
+
+/* =========================================================================
+   학습강의안 (Lecture Notes) — 시간대별 자료
+   ========================================================================= */
+.lecture { padding: clamp(2rem, 5vw, 3.5rem) var(--gap); max-width: var(--maxw); }
+.lecture__head { max-width: 46rem; margin-bottom: 2.2rem; }
+.lecture__title { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: .4rem 0 .7rem; }
+.lecture__lead { color: var(--ink-70); font-size: 1.05rem; }
+.lecture__lead strong { color: var(--ink); }
+
+.lecture__layout { display: grid; grid-template-columns: 230px 1fr; gap: 2.2rem; align-items: start; }
+
+/* 타임라인 사이드 내비 */
+.lecture__rail { position: sticky; top: 86px; }
+.lecture__rail-title { color: var(--ink-45); font-size: .72rem; letter-spacing: .12em; margin-bottom: .8rem; }
+.lecture__rail-list { list-style: none; display: flex; flex-direction: column; gap: .2rem; border-left: 2px solid var(--paper-d); }
+.lecture__rail-list a { display: flex; flex-direction: column; gap: .1rem; padding: .55rem .9rem; margin-left: -2px; border-left: 2px solid transparent; color: var(--ink-70); transition: all var(--duration) var(--ease); }
+.lecture__rail-list a:hover { border-left-color: var(--accent); color: var(--ink); background: var(--wash); }
+.lecture__rail-time { font-size: .72rem; color: var(--pigment); }
+.lecture__rail-name { font-size: .86rem; font-weight: 600; }
+
+/* 본문 블록 */
+.lecture__body { min-width: 0; display: flex; flex-direction: column; gap: 2.4rem; }
+.lecture__block { scroll-margin-top: 86px; }
+.lecture__block-head { background: var(--wash); border-radius: var(--radius-lg); padding: 1.3rem 1.5rem; margin-bottom: 1.2rem; }
+.lecture__period { color: var(--pigment); font-size: .8rem; }
+.lecture__period i { margin-right: .3rem; }
+.lecture__block-title { font-size: 1.5rem; margin: .3rem 0; }
+.lecture__block-summary { color: var(--ink-70); }
+
+.note { background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1.3rem 1.5rem; margin-bottom: 1.1rem; }
+.note__head { display: flex; align-items: baseline; gap: .7rem; padding-bottom: .9rem; margin-bottom: .9rem; border-bottom: 1px solid var(--paper-d); }
+.note__no { color: #fff; background: var(--pigment); border-radius: 6px; padding: .15rem .5rem; font-size: .78rem; flex-shrink: 0; }
+.note__title { font-size: 1.18rem; flex: 1; }
+.note__min { color: var(--ink-45); font-size: .8rem; flex-shrink: 0; }
+.note__sec { margin: .9rem 0; }
+.note__sec-title { font-size: .92rem; color: var(--ink); display: flex; align-items: center; gap: .45rem; margin-bottom: .45rem; }
+.note__sec-title i { color: var(--pigment); font-size: .85rem; }
+.note__sec--practice { background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--accent) 7%, #fff)); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: .8rem 1rem; }
+.note__sec--practice .note__sec-title i { color: color-mix(in srgb, var(--accent) 75%, var(--ink)); }
+.note__more { display: inline-flex; align-items: center; gap: .35rem; margin-top: .6rem; color: var(--pigment); font-size: .8rem; font-weight: 600; }
+.note__more:hover { color: var(--accent); }
+
+.lecture__foot { text-align: center; padding: 2rem 1rem 1rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; border-top: 1px solid var(--paper-d); }
+.lecture__foot p { color: var(--ink-70); }
+
+/* =========================================================================
+   커뮤니티
+   ========================================================================= */
+.channel { display: flex; flex-direction: column; gap: .5rem; }
+.channel__icon { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--wash); color: var(--pigment); font-size: 1.3rem; margin-bottom: .4rem; }
+.channel h3 { font-size: 1.15rem; }
+.channel p { color: var(--ink-70); flex: 1; }
+.channel .btn { align-self: flex-start; margin-top: .3rem; }
+.channel__cta { color: var(--ink-45); font-size: .82rem; margin-top: .3rem; }
+
+.faq { list-style: none; max-width: 48rem; }
+.faq__item { background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); margin-bottom: .7rem; overflow: hidden; }
+.faq__q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.1rem 1.3rem; background: none; border: none; text-align: left; font-size: 1rem; font-weight: 600; color: var(--ink); font-family: var(--font-display); }
+.faq__q:hover { color: var(--pigment); }
+.faq__qicon { color: var(--pigment); margin-right: .2rem; }
+.faq__chev { color: var(--ink-45); font-size: .85rem; }
+.faq__item.is-open .faq__chev { color: var(--pigment); }
+.faq__a { padding: 0 1.3rem 1.2rem; color: var(--ink-70); line-height: 1.7; }
+
 /* --- 반응형 --- */
+@media (max-width: 880px) {
+  .lecture__layout { grid-template-columns: 1fr; }
+  .lecture__rail { position: static; margin-bottom: 1.4rem; }
+  .lecture__rail-list { flex-direction: row; flex-wrap: wrap; border-left: none; gap: .4rem; }
+  .lecture__rail-list a { border: 1px solid var(--paper-d); border-radius: 100px; margin-left: 0; padding: .4rem .8rem; }
+  .lecture__rail-list a:hover { border-color: var(--accent); }
+}
 @media (max-width: 980px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }

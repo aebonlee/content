@@ -2,10 +2,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
+import About from './pages/About'
 import Curriculum from './pages/Curriculum'
+import LectureNotes from './pages/LectureNotes'
 import Lesson from './pages/Lesson'
 import Stamps from './pages/Stamps'
 import Gallery from './pages/Gallery'
+import Community from './pages/Community'
 
 // 대면 워크숍 학습자료 사이트 — 로그인/결제/진도 대시보드 없음(정적 + localStorage 도장).
 export default function App() {
@@ -16,10 +19,13 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/curriculum" element={<Curriculum />} />
+            <Route path="/lecture" element={<LectureNotes />} />
             <Route path="/lesson/:id" element={<Lesson />} />
-            <Route path="/stamps" element={<Stamps />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/stamps" element={<Stamps />} />
+            <Route path="/community" element={<Community />} />
           </Routes>
         </main>
         <Footer />

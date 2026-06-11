@@ -209,6 +209,7 @@ main { flex: 1; }
 .gallery-card__cat { position: absolute; top: .7rem; left: .7rem; background: color-mix(in srgb, #fff 80%, transparent); color: var(--ink-70); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; padding: .15rem .5rem; border-radius: 100px; }
 
 .gallery-card__body { padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; gap: .4rem; flex: 1; }
+.gallery-card__module { color: var(--pigment); font-size: .7rem; letter-spacing: .02em; }
 .gallery-card__title { font-size: 1.08rem; }
 .gallery-card__desc { color: var(--ink-70); font-size: .9rem; }
 .gallery-card__foot { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-top: auto; padding-top: .6rem; flex-wrap: wrap; }
@@ -358,8 +359,78 @@ main { flex: 1; }
 .faq__item.is-open .faq__chev { color: var(--pigment); }
 .faq__a { padding: 0 1.3rem 1.2rem; color: var(--ink-70); line-height: 1.7; }
 
+/* =========================================================================
+   학습강의안 — 인덱스 모듈 카드
+   ========================================================================= */
+.lecmod-card { background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); margin-bottom: 1.1rem; transition: box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease); }
+.lecmod-card:hover { box-shadow: var(--shadow-soft); transform: translateY(-3px); }
+.lecmod-card__link { display: block; padding: 1.3rem 1.5rem; color: var(--ink); }
+.lecmod-card__link:hover { color: var(--ink); }
+.lecmod-card__head { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+.lecmod-card__badge { background: var(--pigment); color: #fff; border-radius: 6px; padding: .12rem .5rem; font-size: .76rem; font-weight: 700; }
+.lecmod-card__period { color: var(--ink-45); font-size: .78rem; }
+.lecmod-card__period i { margin-right: .25rem; }
+.lecmod-card__title { font-size: 1.3rem; margin-bottom: .4rem; }
+.lecmod-card__goal { color: var(--ink-70); font-size: .95rem; margin-bottom: .8rem; }
+.lecmod-card__sessions { list-style: none; display: flex; flex-direction: column; gap: .3rem; margin-bottom: .9rem; }
+.lecmod-card__sessions li { color: var(--ink-70); font-size: .9rem; }
+.lecmod-card__sessions i { color: var(--pigment); margin-right: .4rem; }
+.lecmod-card__cta { color: var(--pigment); font-weight: 600; font-size: .85rem; }
+.lecmod-card:hover .lecmod-card__cta { color: var(--accent); }
+
+/* =========================================================================
+   학습강의안 — 모듈 상세 페이지
+   ========================================================================= */
+.lecmod { padding: clamp(2rem, 5vw, 3.5rem) var(--gap); max-width: 880px; }
+.lecmod__head { padding-bottom: 1.4rem; margin-bottom: 1.6rem; border-bottom: 2px solid var(--paper-d); }
+.lecmod__period { color: var(--pigment); font-size: .82rem; }
+.lecmod__period i { margin-right: .3rem; }
+.lecmod__title { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: .4rem 0 .8rem; }
+.lecmod__goal { color: var(--ink-70); font-size: 1.05rem; line-height: 1.7; background: var(--wash); border-radius: var(--radius); padding: .9rem 1.1rem; }
+.lecmod__goal i { color: var(--pigment); margin-right: .4rem; }
+
+.lecmod__session { background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1.5rem 1.6rem; margin-bottom: 1.4rem; }
+.lecmod__session-head { display: flex; align-items: baseline; gap: .7rem; padding-bottom: .8rem; margin-bottom: 1rem; border-bottom: 1px solid var(--paper-d); }
+.lecmod__session-no { color: #fff; background: var(--ink); border-radius: 6px; padding: .15rem .5rem; font-size: .78rem; flex-shrink: 0; }
+.lecmod__session-title { font-size: 1.25rem; }
+.lecmod__lead { color: var(--ink-70); margin-bottom: 1.2rem; }
+
+.lecmod__sec { margin: 1.2rem 0; }
+.lecmod__sec-title { font-size: 1rem; color: var(--ink); display: flex; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+.lecmod__sec-title i { color: var(--pigment); font-size: .9rem; }
+.lecmod__sec--warn .lecmod__sec-title i { color: var(--accent); }
+
+/* 개념 정의 리스트 */
+.concept-list { display: flex; flex-direction: column; gap: .7rem; }
+.concept { border-left: 3px solid var(--wash); padding-left: .9rem; }
+.concept__term { font-weight: 700; color: var(--pigment); font-size: .95rem; margin-bottom: .15rem; }
+.concept__desc { color: var(--ink-70); font-size: .92rem; line-height: 1.65; }
+
+/* 실습 절차 */
+.step-list { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: .5rem; }
+.step-list li { counter-increment: step; position: relative; padding-left: 2rem; color: var(--ink-70); line-height: 1.6; }
+.step-list li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 1.4rem; height: 1.4rem; background: var(--pigment); color: #fff; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-mono); font-size: .72rem; font-weight: 600; }
+
+/* 프롬프트 코드 블록 */
+.prompt-block { background: var(--ink); color: var(--wash); border-radius: var(--radius); padding: 1rem 1.2rem; overflow-x: auto; font-family: var(--font-mono); font-size: .82rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.prompt-block code { font-family: inherit; }
+
+.lecmod__output { margin-top: 1rem; background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--accent) 8%, #fff)); border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent); border-radius: var(--radius); padding: .7rem 1rem; color: var(--ink); font-size: .88rem; }
+.lecmod__output i { color: color-mix(in srgb, var(--accent) 75%, var(--ink)); margin-right: .4rem; }
+
+/* 도구/체크리스트 패널 */
+.lecmod__meta { margin: 1.6rem 0; align-items: stretch; }
+.lecmod__panel { }
+.lecmod__panel-title { font-size: 1.05rem; color: var(--pigment); display: flex; align-items: center; gap: .5rem; margin-bottom: .8rem; }
+.tool-deep { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.tool-deep li { color: var(--ink-70); font-size: .9rem; line-height: 1.6; }
+.tool-deep strong { color: var(--ink); }
+.lecmod__refs { background: var(--wash); border-radius: var(--radius-lg); padding: 1.2rem 1.4rem; margin-bottom: 1.6rem; }
+.lecmod__refs .material__list strong { color: var(--pigment); }
+
 /* --- 반응형 --- */
 @media (max-width: 880px) {
+  .lecmod__meta { grid-template-columns: 1fr; }
   .lecture__layout { grid-template-columns: 1fr; }
   .lecture__rail { position: static; margin-bottom: 1.4rem; }
   .lecture__rail-list { flex-direction: row; flex-wrap: wrap; border-left: none; gap: .4rem; }

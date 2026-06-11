@@ -7,7 +7,7 @@ import Icon from '../components/Icon'
 
 export default function Home() {
   const totalSessions = modules.reduce((s, m) => s + m.lessons.length, 0)
-  const galleryPreview = gallery.slice(0, 6)
+  const galleryPreview = gallery
 
   return (
     <>
@@ -147,7 +147,7 @@ export default function Home() {
             <Reveal key={g.id} className={`gallery-card gallery-card--${g.cat}`} style={{ transitionDelay: `${i * 50}ms` }}>
               <div className={`gallery-card__cover gallery-card__cover--${g.cat}`} aria-hidden>
                 <span className="gallery-card__emoji"><Icon name={g.icon} /></span>
-                <span className="gallery-card__cat mono">{g.cat}</span>
+                <span className="gallery-card__cat mono">M{g.module}</span>
               </div>
               <div className="gallery-card__body">
                 <h3 className="gallery-card__title">{g.title}</h3>

@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Curriculum from './pages/Curriculum'
 import LectureNotes from './pages/LectureNotes'
+import LectureModule from './pages/LectureModule'
 import Lesson from './pages/Lesson'
 import Stamps from './pages/Stamps'
 import Gallery from './pages/Gallery'
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/curriculum" element={<Curriculum />} />
             <Route path="/lecture" element={<LectureNotes />} />
+            <Route path="/lecture/:moduleId" element={<LectureModule />} />
             <Route path="/lesson/:id" element={<Lesson />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/stamps" element={<Stamps />} />

@@ -256,32 +256,22 @@ export const stamps = [
 // 갤러리 — 대면 워크숍에서 만들어 내는 결과물의 예시 쇼케이스.
 // 카테고리: content / image / page · icon 은 Font Awesome 클래스.
 // =========================================================================
-export const galleryCategories = [
-  { key: 'all', label: '전체' },
-  { key: 'content', label: '콘텐츠' },
-  { key: 'image', label: '이미지' },
-  { key: 'page', label: '페이지' },
-]
-
+// 7개 모듈 = 7개 결과물 (M1~M7 각 1개). cat 은 커버 색만 결정.
 export const gallery = [
-  { id: 'g1', cat: 'content', icon: 'fa-solid fa-pen-fancy', title: '제품·서비스 소개문',
-    desc: '톤을 유지한 홍보 문안.', tool: 'ChatGPT · Claude', stamp: 's3' },
-  { id: 'g2', cat: 'content', icon: 'fa-solid fa-hashtag', title: 'SNS·카드뉴스 문구',
-    desc: '채널별 캡션·해시태그·문구 세트.', tool: 'ChatGPT', stamp: 's3' },
-  { id: 'g3', cat: 'content', icon: 'fa-solid fa-newspaper', title: '블로그·행사 안내문',
-    desc: '블로그 초안·행사 안내문 초안.', tool: 'Claude', stamp: 's3' },
-  { id: 'g4', cat: 'image', icon: 'fa-solid fa-image', title: '홍보 배너·썸네일',
-    desc: '채널 규격에 맞춘 홍보 비주얼.', tool: 'ImageFX · DALL·E', stamp: 's4' },
-  { id: 'g5', cat: 'image', icon: 'fa-solid fa-images', title: '카드뉴스 세트',
-    desc: '동일 톤으로 이어지는 카드 시리즈.', tool: 'Canva AI', stamp: 's4' },
-  { id: 'g6', cat: 'image', icon: 'fa-solid fa-palette', title: '브랜드 무드 비주얼',
-    desc: '색·질감을 지정해 만든 이미지.', tool: 'Midjourney · ImageFX', stamp: 's4' },
-  { id: 'g7', cat: 'page', icon: 'fa-solid fa-object-group', title: 'UI 시안 (Google Stitch)',
+  { id: 'g1', module: 1, cat: 'content', icon: 'fa-solid fa-magnifying-glass-chart', title: 'AI 업무 진단표',
+    desc: 'AI로 자동화할 반복 홍보업무 목록.', tool: 'ChatGPT', stamp: 's1' },
+  { id: 'g2', module: 2, cat: 'content', icon: 'fa-solid fa-bullseye', title: '홍보 기획 한 장',
+    desc: '목적·타깃·핵심 메시지 + 프롬프트.', tool: 'ChatGPT · Claude', stamp: 's2' },
+  { id: 'g3', module: 3, cat: 'content', icon: 'fa-solid fa-pen-fancy', title: '홍보 콘텐츠 세트',
+    desc: '소개문·SNS·블로그·카드뉴스 문구.', tool: 'ChatGPT · Claude', stamp: 's3' },
+  { id: 'g4', module: 4, cat: 'image', icon: 'fa-solid fa-image', title: '홍보 시각자료',
+    desc: '배너·카드뉴스·썸네일 비주얼.', tool: 'ImageFX · Canva AI', stamp: 's4' },
+  { id: 'g5', module: 5, cat: 'page', icon: 'fa-solid fa-object-group', title: 'UI 시안',
     desc: '자연어로 만든 홍보 페이지 시안.', tool: 'Google Stitch', stamp: 's5' },
-  { id: 'g8', cat: 'page', icon: 'fa-solid fa-window-maximize', title: '랜딩·이벤트 페이지',
-    desc: '섹션·CTA를 갖춘 홍보 페이지.', tool: 'Google Stitch · Framer', stamp: 's6' },
-  { id: 'g9', cat: 'page', icon: 'fa-solid fa-rectangle-list', title: '상세·서비스 소개 페이지',
-    desc: '사용자 흐름에 맞춘 페이지 구성.', tool: 'Framer', stamp: 's6' },
+  { id: 'g6', module: 6, cat: 'page', icon: 'fa-solid fa-window-maximize', title: '홍보 페이지',
+    desc: '섹션·CTA를 갖춘 상세·랜딩 페이지.', tool: 'Google Stitch · Framer', stamp: 's6' },
+  { id: 'g7', module: 7, cat: 'page', icon: 'fa-solid fa-gears', title: '자동화 루틴',
+    desc: '재사용 템플릿으로 묶은 홍보 자동화.', tool: 'Make · 노션', stamp: 's7' },
 ]
 
 // =========================================================================

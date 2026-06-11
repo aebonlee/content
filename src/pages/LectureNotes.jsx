@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { modules, course } from '../config/site'
+import { lectureDetails } from '../config/lectures'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 
-// 학습강의안 — 시간대별 학습자료 전문(全文).
-// 커리큘럼이 "목차"라면, 이 페이지는 하루를 따라 읽는 "강의안 본문".
+// 학습강의안 — 인덱스. 모듈별 개별 페이지(/lecture/:moduleId)로 진입한다.
 export default function LectureNotes() {
   const totalSessions = modules.reduce((s, m) => s + m.lessons.length, 0)
 
@@ -13,91 +13,57 @@ export default function LectureNotes() {
       {/* 헤더 */}
       <header className="lecture__head">
         <p className="eyeline mono">LECTURE NOTES · 학습강의안</p>
-        <h1 className="lecture__title">시간대별 학습자료</h1>
+        <h1 className="lecture__title">시간대별 · 모듈별 강의안</h1>
         <p className="lecture__lead">
           {course.schedule.offline} · {modules.length}개 모듈 · {totalSessions}개 세션.
-          하루의 흐름을 따라 세션마다 <strong>학습목표 · 핵심 개념 · 대면 실습 · 사용 도구</strong>를 담았습니다.
+          모듈을 선택하면 <strong>핵심 개념 · 실습 절차 · 프롬프트 예시 · 흔한 실수 · 도구 가이드</strong>까지
+          상세 강의안이 열립니다.
         </p>
       </header>
 
       <div className="lecture__layout">
-        {/* 시간표 사이드 내비 */}
+        {/* 타임라인 사이드 내비 */}
         <aside className="lecture__rail">
           <p className="lecture__rail-title mono">TIMELINE</p>
           <ul className="lecture__rail-list">
             {modules.map((m) => (
               <li key={m.id}>
-                <a href={`#kyo-${m.no}`}>
+                <Link to={`/lecture/${m.id}`}>
                   <span className="lecture__rail-time mono">{m.period} · {m.time}{m.hours === 2 ? ' · 2시간' : ''}</span>
                   <span className="lecture__rail-name">M{m.no}. {m.title}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </aside>
 
-        {/* 강의안 본문 */}
+        {/* 모듈 카드 목록 */}
         <div className="lecture__body">
-          {modules.map((m) => (
-            <section key={m.id} id={`kyo-${m.no}`} className="lecture__block">
-              <div className="lecture__block-head">
-                <span className="lecture__period mono">
-                  <Icon name="fa-regular fa-clock" /> {m.period} · {m.time}{m.hours === 2 ? ' · 2시간' : ''}
-                </span>
-                <h2 className="lecture__block-title">M{m.no}. {m.title}</h2>
-                <p className="lecture__block-summary">{m.summary}</p>
-              </div>
-
-              {m.lessons.map((l, li) => (
-                <Reveal key={l.id} className="note">
-                  <div className="note__head">
-                    <span className="note__no mono">{m.no}-{li + 1}</span>
-                    <h3 className="note__title">{l.title}</h3>
+          {modules.map((m) => {
+            const detail = lectureDetails[m.id]
+            return (
+              <Reveal key={m.id} className="lecmod-card">
+                <Link to={`/lecture/${m.id}`} className="lecmod-card__link">
+                  <div className="lecmod-card__head">
+                    <span className="lecmod-card__badge mono">M{m.no}</span>
+                    <span className="lecmod-card__period mono">
+                      <Icon name="fa-regular fa-clock" /> {m.period} · {m.time}{m.hours === 2 ? ' · 2시간' : ''}
+                    </span>
                   </div>
-
-                  {l.objectives?.length > 0 && (
-                    <div className="note__sec">
-                      <h4 className="note__sec-title"><Icon name="fa-solid fa-bullseye" /> 학습목표</h4>
-                      <ul className="material__list">
-                        {l.objectives.map((o, i) => <li key={i}>{o}</li>)}
-                      </ul>
-                    </div>
-                  )}
-
-                  {l.keypoints?.length > 0 && (
-                    <div className="note__sec">
-                      <h4 className="note__sec-title"><Icon name="fa-solid fa-key" /> 핵심 개념</h4>
-                      <ul className="material__list material__list--check">
-                        {l.keypoints.map((k, i) => (
-                          <li key={i}><Icon name="fa-solid fa-check" className="material__bullet" /> {k}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {l.practice && (
-                    <div className="note__sec note__sec--practice">
-                      <h4 className="note__sec-title"><Icon name="fa-solid fa-pen-ruler" /> 대면 실습</h4>
-                      <p className="material__practice">{l.practice}</p>
-                    </div>
-                  )}
-
-                  {l.tools?.length > 0 && (
-                    <div className="note__sec">
-                      <h4 className="note__sec-title"><Icon name="fa-solid fa-toolbox" /> 사용 도구</h4>
-                      <div className="material__tools">
-                        {l.tools.map((t) => <span key={t} className="tool-chip mono">{t}</span>)}
-                      </div>
-                    </div>
-                  )}
-
-                  <Link to={`/lesson/${l.id}`} className="note__more mono">
-                    이 세션만 보기 <Icon name="fa-solid fa-arrow-right" />
-                  </Link>
-                </Reveal>
-              ))}
-            </section>
-          ))}
+                  <h2 className="lecmod-card__title">{m.title}</h2>
+                  <p className="lecmod-card__goal">{detail?.goal || m.summary}</p>
+                  <ul className="lecmod-card__sessions">
+                    {m.lessons.map((l) => (
+                      <li key={l.id}><Icon name="fa-regular fa-file-lines" /> {l.title}</li>
+                    ))}
+                  </ul>
+                  <span className="lecmod-card__cta mono">
+                    강의안 열기 <Icon name="fa-solid fa-arrow-right" />
+                  </span>
+                </Link>
+              </Reveal>
+            )
+          })}
 
           <div className="lecture__foot">
             <p>강의안을 따라 직접 만들어 보세요.</p>

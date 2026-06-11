@@ -3,7 +3,7 @@
 휴넷 인재키움 과정 **「AI로 만드는 홍보 실무 — 콘텐츠·이미지·페이지까지 자동화 완성」**(단과·초급·8시간)
 온라인 학습사이트. React 19 + Vite 7 + Supabase. [`templete03`](https://github.com/aebonlee/templete03) 베이스.
 
-🔗 https://content.dreamitbiz.com
+🔗 https://contents.dreamitbiz.com
 
 ## 특징
 - **커리큘럼** — 4모듈 15레슨(≈8시간): 콘텐츠 · 이미지 · 페이지 · 워크플로 자동화
@@ -21,7 +21,7 @@ npm run build    # dist/ 프로덕션 빌드
 `.env.example` → `.env.local` 복사 후 값 입력. (Supabase 미설정 시에도 정적 데이터로 동작)
 
 ## 배포
-GitHub Actions → **gh-pages 브랜치** 자동 배포(`main` push). 커스텀 도메인 `content.dreamitbiz.com`.
+GitHub Actions → **gh-pages 브랜치** 자동 배포(`main` push). 커스텀 도메인 `contents.dreamitbiz.com`.
 GitHub Pages 소스는 `gh-pages` 브랜치 root로 설정.
 
 ## 구조

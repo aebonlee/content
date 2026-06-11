@@ -9,7 +9,7 @@ export const site = {
   tagline: '콘텐츠·이미지·페이지까지, AI로 한 번에',
   description:
     'AI로 홍보 실무를 자동화한다. 카피·SNS 콘텐츠부터 생성형 이미지, 랜딩페이지 제작까지 — 직접 만들며 익히는 8시간 실습 과정.',
-  url: import.meta.env.VITE_SITE_URL || 'https://content.dreamitbiz.com',
+  url: import.meta.env.VITE_SITE_URL || 'https://contents.dreamitbiz.com',
   contact: 'hello@dreamitbiz.com',
 }
 

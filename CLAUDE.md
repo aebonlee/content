@@ -14,7 +14,7 @@
 - React 19 · Vite 7 · React Router 7 · Supabase JS
 - GitHub Actions(`.github/workflows/deploy.yml`) → **gh-pages 브랜치**
   (`peaceiris/actions-gh-pages`, `main` push 자동배포). Pages 소스 = gh-pages root.
-- 커스텀 도메인: `content.dreamitbiz.com` (CNAME), `base: '/'`
+- 커스텀 도메인: `contents.dreamitbiz.com` (CNAME), `base: '/'`
 - 인증/결제 코드는 템플릿에서 유지되나 현재 사이트 흐름에서는 미사용.
 
 ## Supabase 테이블 접두사

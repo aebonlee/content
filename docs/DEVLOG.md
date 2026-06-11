@@ -7,8 +7,8 @@
 온라인 학습사이트로 구축. 베이스 템플릿은 [`templete03`](https://github.com/aebonlee/templete03)
 (React 19 + Vite 7 + Supabase, 다크블루 아트디렉션 + 형광펜 시그니처).
 
-- 리포: `aebonlee/content`
-- 도메인: `content.dreamitbiz.com` (CNAME)
+- 리포: `aebonlee/contents` (초기 `content` → 복수형 `contents`로 변경)
+- 도메인: `contents.dreamitbiz.com` (CNAME)
 - 배포: GitHub Actions → **gh-pages 브랜치** (`peaceiris/actions-gh-pages`, main push 자동)
 - 테이블 접두사: `cnt_` (DreamIT 공용 Supabase 프로젝트 공유)
 

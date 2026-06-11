@@ -32,7 +32,7 @@ jobs:
       - name: SPA fallback + CNAME
         run: |
           cp dist/index.html dist/404.html
-          echo "content.dreamitbiz.com" > dist/CNAME
+          echo "contents.dreamitbiz.com" > dist/CNAME
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:

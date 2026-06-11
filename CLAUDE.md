@@ -1,37 +1,34 @@
-# content — AI 홍보 스튜디오 (AI로 만드는 홍보 실무)
+# contents — AI 홍보 스튜디오 (AI로 만드는 홍보 실무)
 
 휴넷 인재키움 과정 「AI로 만드는 홍보 실무 — 콘텐츠·이미지·페이지까지 자동화 완성」
-(단과·초급·8시간) 온라인 학습사이트. [`templete03`](https://github.com/aebonlee/templete03)
-(React 19 + Vite 7 + Supabase, 다크블루 아트디렉션) 베이스로 구축.
+(단과·초급·8시간, **오프라인 집합교육 1일 워크숍**)의 **대면 강의 학습자료** 사이트.
+[`templete03`](https://github.com/aebonlee/templete03)(React 19 + Vite 7, 다크블루 아트디렉션) 베이스.
 
 ## 콘셉트
-- **출결·결제 대시보드 없음** — 강의 내용 전달에 집중. 모든 레슨 공개(`free: true`).
-- **도장깨기(`pages/Stamps.jsx`)** — 강의를 8개 실습 미션으로. 직접 만들어 도장을 찍는다.
-  로그인 없이 `localStorage`(`content.stamps.v1`)에 진행 저장.
+- **동영상 강의가 아니라 대면 워크숍 학습자료** — `Lesson.jsx`는 영상이 아니라
+  세션별 **학습목표·핵심개념·대면 실습·사용 도구**를 보여준다.
+- **커리큘럼 = 하루 타임테이블** — 4교시 15세션(09:00–18:00) + 준비물 안내.
+- **도장깨기(`pages/Stamps.jsx`)** — 워크숍을 8개 실습 미션으로. 로그인 없이
+  `localStorage`(`content.stamps.v1`)에 진행 저장.
 - **갤러리(`pages/Gallery.jsx`)** — 만들게 될 결과물 쇼케이스(콘텐츠/이미지/페이지 필터).
+- **아이콘 = Font Awesome** — 이모지 대신 FA 클래스. `components/Icon.jsx` 래퍼로 렌더.
+- 출결/로그인/결제/진도 대시보드 없음 → **완전 정적 + localStorage**. Supabase 미사용.
 
 ## 스택 / 배포
-- React 19 · Vite 7 · React Router 7 · Supabase JS
+- React 19 · Vite 7 · React Router 7 (DB/인증 라이브러리 없음 — 정적 SPA)
+- 아이콘: Font Awesome 6.5.2 (CDN, `index.html`)
 - GitHub Actions(`.github/workflows/deploy.yml`) → **gh-pages 브랜치**
   (`peaceiris/actions-gh-pages`, `main` push 자동배포). Pages 소스 = gh-pages root.
 - 커스텀 도메인: `contents.dreamitbiz.com` (CNAME), `base: '/'`
-- 인증/결제 코드는 템플릿에서 유지되나 현재 사이트 흐름에서는 미사용.
-
-## Supabase 테이블 접두사
-모든 테이블은 **`cnt_` 접두사**를 사용한다 (DreamIT 공용 Supabase 프로젝트 공유).
-`VITE_TABLE_PREFIX=cnt_` · `supabase/schema.sql` 접두사. JS에서는 `lib/supabase.js`
-의 `t('progress')` 헬퍼 사용. Supabase 미설정 시에도 정적 데이터로 동작.
-
-## 환경변수 (.env.local — git 제외)
-`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_SITE_URL`, `VITE_TABLE_PREFIX`.
-`SUPABASE_ACCESS_TOKEN`(sbp_)은 CLI 전용 — **VITE_ 접두사 금지**. `.env.example` 참고.
 
 ## 디렉터리
-- `src/config/site.js` — 모든 콘텐츠(과정/히어로/모듈/도장/갤러리). **수정은 주로 여기**
+- `src/config/site.js` — 모든 콘텐츠(과정/일정/타임테이블/세션자료/도장/갤러리). **수정은 주로 여기**
+- `src/components/Icon.jsx` — Font Awesome 아이콘 래퍼
 - `src/styles/tokens.css` — 아트디렉션 5색 팔레트 + 토큰
-- `src/styles/layout.css` — 도장깨기·갤러리 등 컴포넌트 스타일
-- `src/pages/` — Home · Curriculum · Lesson · Stamps · Gallery · Login
+- `src/styles/layout.css` — 학습자료·도장깨기·갤러리·일정 등 컴포넌트 스타일
+- `src/pages/` — Home · Curriculum · Lesson · Stamps · Gallery
 - `docs/DEVLOG.md` — 개발일지
+- `supabase/` — (미사용) 향후 백엔드 필요 시 참고용 스키마
 
 ---
 

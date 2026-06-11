@@ -1,6 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { AuthProvider } from './context/AuthContext'
-import { ProgressProvider } from './context/ProgressContext'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -8,29 +6,24 @@ import Curriculum from './pages/Curriculum'
 import Lesson from './pages/Lesson'
 import Stamps from './pages/Stamps'
 import Gallery from './pages/Gallery'
-import Login from './pages/Login'
 
+// 대면 워크숍 학습자료 사이트 — 로그인/결제/진도 대시보드 없음(정적 + localStorage 도장).
 export default function App() {
   return (
-    <AuthProvider>
-      <ProgressProvider>
-      <BrowserRouter>
-        <div className="app grain">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/curriculum" element={<Curriculum />} />
-              <Route path="/lesson/:id" element={<Lesson />} />
-              <Route path="/stamps" element={<Stamps />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
-      </ProgressProvider>
-    </AuthProvider>
+    <BrowserRouter>
+      <div className="app grain">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/curriculum" element={<Curriculum />} />
+            <Route path="/lesson/:id" element={<Lesson />} />
+            <Route path="/stamps" element={<Stamps />} />
+            <Route path="/gallery" element={<Gallery />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }

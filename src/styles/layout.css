@@ -210,6 +210,63 @@ main { flex: 1; }
 .gallery-card__stamp { color: var(--pigment); font-size: .74rem; font-weight: 600; }
 .gallery-card__stamp:hover { color: var(--accent); }
 
+/* FA 아이콘 색 — 카드 커버/도장 */
+.gallery-card__emoji { color: var(--pigment); }
+.gallery-card__cover--image .gallery-card__emoji { color: color-mix(in srgb, var(--accent) 78%, var(--ink)); }
+.gallery-card__cover--page .gallery-card__emoji { color: var(--ink); }
+.stamp-card__emoji { color: var(--pigment); }
+.stamp-card--done .stamp-card__emoji { color: color-mix(in srgb, var(--accent) 70%, var(--ink)); }
+.stamp-chip__emoji { color: var(--pigment); }
+.feature__icon i { font-size: 1.15rem; }
+
+/* =========================================================================
+   대면 일정 / 준비물
+   ========================================================================= */
+.schedule__card { text-align: center; }
+.schedule__icon { display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--wash); color: var(--pigment); font-size: 1.4rem; margin-bottom: .7rem; }
+.schedule__card h3 { font-size: 1.1rem; margin-bottom: .3rem; }
+.schedule__card p { color: var(--ink-70); font-size: .92rem; }
+.schedule__note { margin-top: 1.4rem; text-align: center; color: var(--ink-45); font-size: .82rem; }
+.schedule__note i { color: var(--pigment); }
+
+.bring { margin-top: 2.6rem; border-top: 1px solid var(--paper-d); padding-top: 1.8rem; }
+.bring__title { font-size: 1.2rem; margin-bottom: 1rem; color: var(--pigment); display: flex; align-items: center; gap: .5rem; }
+.bring__grid { gap: 1rem; }
+.bring__item { display: flex; gap: .9rem; align-items: flex-start; background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1rem 1.2rem; }
+.bring__icon { flex-shrink: 0; display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--wash); color: var(--pigment); font-size: 1.1rem; }
+.bring__item strong { display: block; margin-bottom: .15rem; }
+.bring__item p { color: var(--ink-70); font-size: .88rem; }
+
+/* =========================================================================
+   커리큘럼 — 세션 행 보조
+   ========================================================================= */
+.module__no i { margin-right: .25rem; }
+.lesson-row__obj { display: block; font-style: normal; color: var(--ink-45); font-size: .82rem; margin-top: .15rem; }
+.lesson-row__check { color: var(--pigment); }
+.lesson-row__arrow { color: var(--ink-45); font-size: .7rem; }
+
+/* =========================================================================
+   Lesson — 대면 학습자료
+   ========================================================================= */
+.material { margin: 1.6rem 0; background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1.3rem 1.5rem; }
+.material--goal { border-left: 4px solid var(--pigment); }
+.material--practice { border-left: 4px solid var(--accent); background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--accent) 6%, #fff)); }
+.material__title { font-size: 1.12rem; margin-bottom: .7rem; display: flex; align-items: center; gap: .5rem; color: var(--ink); }
+.material__title i { color: var(--pigment); }
+.material--practice .material__title i { color: color-mix(in srgb, var(--accent) 75%, var(--ink)); }
+.material__list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.material__list li { color: var(--ink-70); }
+.material__list--check li { display: flex; gap: .55rem; align-items: baseline; }
+.material__bullet { color: var(--pigment); font-size: .78rem; }
+.material__practice { color: var(--ink); line-height: 1.7; }
+.material__tools { display: flex; flex-wrap: wrap; gap: .5rem; }
+.tool-chip { background: var(--wash); color: var(--pigment); border: 1px solid color-mix(in srgb, var(--pigment) 20%, transparent); padding: .3rem .7rem; border-radius: 100px; font-size: .8rem; }
+
+.lesson__stamp-cta { display: flex; align-items: center; gap: .7rem; margin: 1.6rem 0; padding: 1rem 1.3rem; border-radius: var(--radius-lg); background: var(--ink); color: var(--wash); transition: background var(--duration) var(--ease); }
+.lesson__stamp-cta:hover { background: var(--pigment-d); color: #fff; }
+.lesson__stamp-cta strong { color: var(--accent); }
+.lesson__stamp-cta span { flex: 1; }
+
 /* --- 반응형 --- */
 @media (max-width: 980px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }

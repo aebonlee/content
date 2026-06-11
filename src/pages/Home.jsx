@@ -3,9 +3,10 @@ import { hero, features, modules, course, stamps, gallery } from '../config/site
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import Highlighter from '../components/Highlighter'
+import Icon from '../components/Icon'
 
 export default function Home() {
-  const totalLessons = modules.reduce((s, m) => s + m.lessons.length, 0)
+  const totalSessions = modules.reduce((s, m) => s + m.lessons.length, 0)
   const galleryPreview = gallery.slice(0, 6)
 
   return (
@@ -63,12 +64,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* --- 대면 일정 안내 --- */}
+      <Section eyeline="SCHEDULE" title="하루, 함께 만드는 워크숍" wash
+               lead={course.fullTitle}>
+        <div className="grid grid-3 schedule">
+          <Reveal className="card schedule__card">
+            <span className="schedule__icon" aria-hidden><Icon name="fa-solid fa-laptop-code" /></span>
+            <h3>사전 온라인</h3>
+            <p>{course.schedule.online}</p>
+          </Reveal>
+          <Reveal className="card schedule__card" style={{ transitionDelay: '80ms' }}>
+            <span className="schedule__icon" aria-hidden><Icon name="fa-solid fa-people-group" /></span>
+            <h3>집합 교육</h3>
+            <p>{course.schedule.offline}</p>
+          </Reveal>
+          <Reveal className="card schedule__card" style={{ transitionDelay: '160ms' }}>
+            <span className="schedule__icon" aria-hidden><Icon name="fa-solid fa-location-dot" /></span>
+            <h3>장소</h3>
+            <p>{course.schedule.place}</p>
+          </Reveal>
+        </div>
+        <p className="schedule__note mono">
+          <Icon name="fa-solid fa-circle-info" /> {course.schedule.note}
+        </p>
+      </Section>
+
       {/* --- 가치 3개 --- */}
       <Section eyeline="WHY" title="홍보 실무, AI로 자동화">
         <div className="grid grid-3">
           {features.map((f, i) => (
             <Reveal key={f.title} className="card feature" style={{ transitionDelay: `${i * 80}ms` }}>
-              <span className="feature__icon" aria-hidden>{f.icon}</span>
+              <span className="feature__icon" aria-hidden><Icon name={f.icon} /></span>
               <h3>{f.title}</h3>
               <p>{f.body}</p>
             </Reveal>
@@ -76,31 +102,33 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* --- 커리큘럼 미리보기 --- */}
-      <Section eyeline="CURRICULUM" title="4개 모듈, 한 걸음씩" wash
-               lead={`${modules.length}개 모듈 · ${totalLessons}개 레슨 · 약 ${course.hours}시간 실습`}>
+      {/* --- 커리큘럼(타임테이블) 미리보기 --- */}
+      <Section eyeline="CURRICULUM" title="4교시, 15개 세션의 학습자료"
+               lead={`${modules.length}교시 · ${totalSessions}개 세션 · 09:00–18:00 (약 ${course.hours}시간)`}>
         <div className="grid grid-2 module-grid">
           {modules.map((m, i) => (
             <Reveal key={m.id} className="card module" style={{ transitionDelay: `${i * 80}ms` }}>
-              <span className="module__no mono">MODULE {String(m.no).padStart(2, '0')}</span>
+              <span className="module__no mono">
+                <Icon name="fa-regular fa-clock" /> {m.time} · {m.no}교시
+              </span>
               <h3>{m.title}</h3>
               <p>{m.summary}</p>
-              <span className="module__count mono">{m.lessons.length} lessons</span>
+              <span className="module__count mono">{m.lessons.length} sessions</span>
             </Reveal>
           ))}
         </div>
         <div className="section__more">
-          <Link to="/curriculum" className="btn btn-primary">전체 커리큘럼 보기</Link>
+          <Link to="/curriculum" className="btn btn-primary">전체 학습자료 보기</Link>
         </div>
       </Section>
 
       {/* --- 도장깨기 미리보기 --- */}
-      <Section eyeline="STAMP RALLY" title="듣지 말고, 만들어 보세요"
-               lead="강의 내용을 8개 미션으로 쪼갰습니다. 직접 만들어 도장을 찍으면 내용이 손에 남습니다.">
+      <Section eyeline="STAMP RALLY" title="듣지 말고, 만들어 보세요" wash
+               lead="워크숍을 8개 미션으로 쪼갰습니다. 직접 만들어 도장을 찍으면 내용이 손에 남습니다.">
         <div className="stamp-strip">
           {stamps.map((s) => (
             <Link key={s.id} to="/stamps" className="stamp-chip" title={s.mission}>
-              <span className="stamp-chip__emoji" aria-hidden>{s.icon}</span>
+              <span className="stamp-chip__emoji" aria-hidden><Icon name={s.icon} /></span>
               <span className="stamp-chip__no mono">{String(s.no).padStart(2, '0')}</span>
               <span className="stamp-chip__title">{s.title}</span>
             </Link>
@@ -112,13 +140,13 @@ export default function Home() {
       </Section>
 
       {/* --- 갤러리 미리보기 --- */}
-      <Section eyeline="GALLERY" title="당신이 만들게 될 것들" wash
-               lead="콘텐츠 · 이미지 · 페이지 — 강의를 따라가면 손에 남는 결과물입니다.">
+      <Section eyeline="GALLERY" title="당신이 만들게 될 것들"
+               lead="콘텐츠 · 이미지 · 페이지 — 워크숍을 따라가면 손에 남는 결과물입니다.">
         <div className="gallery-grid">
           {galleryPreview.map((g, i) => (
             <Reveal key={g.id} className={`gallery-card gallery-card--${g.cat}`} style={{ transitionDelay: `${i * 50}ms` }}>
               <div className={`gallery-card__cover gallery-card__cover--${g.cat}`} aria-hidden>
-                <span className="gallery-card__emoji">{g.emoji}</span>
+                <span className="gallery-card__emoji"><Icon name={g.icon} /></span>
                 <span className="gallery-card__cat mono">{g.cat}</span>
               </div>
               <div className="gallery-card__body">

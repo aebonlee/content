@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { gallery, galleryCategories, stamps } from '../config/site'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
+import Icon from '../components/Icon'
 
-// 갤러리 — 강의에서 만들어 내는 결과물 쇼케이스.
-// "이걸 만들게 됩니다"를 한눈에. cover 는 팔레트 색 플레이스홀더.
+// 갤러리 — 대면 워크숍에서 만들어 내는 결과물 쇼케이스.
+// cover 는 팔레트 색 플레이스홀더(실제 결과물 이미지로 교체 가능).
 const stampNo = (sid) => stamps.find((s) => s.id === sid)?.no
 
 export default function Gallery() {
@@ -16,7 +17,7 @@ export default function Gallery() {
     <Section
       eyeline="GALLERY"
       title="당신이 만들게 될 것들"
-      lead="콘텐츠 · 이미지 · 페이지 — 강의를 따라가면 손에 남는 결과물입니다. 카테고리로 골라 보세요."
+      lead="콘텐츠 · 이미지 · 페이지 — 워크숍을 따라가면 손에 남는 결과물입니다. 카테고리로 골라 보세요."
     >
       {/* 필터 */}
       <div className="gallery-filter">
@@ -40,7 +41,7 @@ export default function Gallery() {
             style={{ transitionDelay: `${i * 50}ms` }}
           >
             <div className={`gallery-card__cover gallery-card__cover--${g.cat}`} aria-hidden>
-              <span className="gallery-card__emoji">{g.emoji}</span>
+              <span className="gallery-card__emoji"><Icon name={g.icon} /></span>
               <span className="gallery-card__cat mono">{g.cat}</span>
             </div>
             <div className="gallery-card__body">
@@ -50,7 +51,7 @@ export default function Gallery() {
                 <span className="gallery-card__tool mono">{g.tool}</span>
                 {stampNo(g.stamp) && (
                   <Link to="/stamps" className="gallery-card__stamp mono">
-                    🎯 미션 {String(stampNo(g.stamp)).padStart(2, '0')}
+                    <Icon name="fa-solid fa-bullseye" /> 미션 {String(stampNo(g.stamp)).padStart(2, '0')}
                   </Link>
                 )}
               </div>

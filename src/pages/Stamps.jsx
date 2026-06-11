@@ -4,8 +4,9 @@ import { stamps, modules } from '../config/site'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import Highlighter from '../components/Highlighter'
+import Icon from '../components/Icon'
 
-// 도장깨기 — 강의 내용을 직접 만들어 보는 8개 미션.
+// 도장깨기 — 대면 워크숍에서 직접 만들어 보는 8개 미션.
 // 로그인 없이 브라우저(localStorage)에 진행 상태를 저장한다.
 const STORE_KEY = 'content.stamps.v1'
 
@@ -41,7 +42,7 @@ export default function Stamps() {
     <Section
       eyeline="STAMP RALLY"
       title="도장깨기"
-      lead="듣고 끝내지 않습니다. 8개의 미션을 직접 만들어 도장을 찍으세요. 손으로 남긴 결과물이 강의를 체화합니다."
+      lead="워크숍은 듣고 끝내지 않습니다. 8개의 미션을 직접 만들어 도장을 찍으세요. 손으로 남긴 결과물이 강의를 체화합니다."
     >
       {/* 진행 요약 */}
       <div className="stamp-summary">
@@ -60,7 +61,7 @@ export default function Stamps() {
 
       {allDone && (
         <Reveal className="stamp-clear">
-          <span className="stamp-clear__seal" aria-hidden>🏅</span>
+          <span className="stamp-clear__seal" aria-hidden><Icon name="fa-solid fa-award" /></span>
           <p>
             8개 미션을 모두 <Highlighter>완성</Highlighter>했습니다. 이제 당신만의 홍보 자동화 루틴이 손에 남았습니다.
           </p>
@@ -79,8 +80,10 @@ export default function Stamps() {
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               <div className="stamp-card__seal" aria-hidden>
-                <span className="stamp-card__emoji">{s.icon}</span>
-                {isDone && <span className="stamp-card__check">완료</span>}
+                <span className="stamp-card__emoji"><Icon name={s.icon} /></span>
+                {isDone && (
+                  <span className="stamp-card__check"><Icon name="fa-solid fa-check" /> 완료</span>
+                )}
               </div>
               <div className="stamp-card__body">
                 <span className="stamp-card__no mono">
@@ -88,12 +91,14 @@ export default function Stamps() {
                 </span>
                 <h3 className="stamp-card__title">{s.title}</h3>
                 <p className="stamp-card__mission">{s.mission}</p>
-                <p className="stamp-card__tip mono">💡 {s.tip}</p>
+                <p className="stamp-card__tip mono">
+                  <Icon name="fa-regular fa-lightbulb" /> {s.tip}
+                </p>
                 <button
                   className={`btn btn-sm ${isDone ? 'btn-ghost' : 'btn-primary'}`}
                   onClick={() => toggle(s.id)}
                 >
-                  {isDone ? '✓ 도장 찍음 (해제)' : '도장 찍기'}
+                  {isDone ? '완료 표시 해제' : '도장 찍기'}
                 </button>
               </div>
             </Reveal>

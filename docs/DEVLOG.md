@@ -1,4 +1,26 @@
-# 개발일지 — content (AI 홍보 스튜디오)
+# 개발일지 — contents (AI 홍보 스튜디오)
+
+## 2026-06-11 · 대면 워크숍 전환 + Font Awesome
+
+### 변경 동기
+실제 휴넷 과정이 **동영상 강의가 아니라 오프라인 집합교육(1일 워크숍, 9/30 09:00–18:00,
+휴넷캠퍼스 비전룸)**임을 반영. 영상 시청형 → **대면 강의 학습자료**로 전환. 더불어 사이트
+전반의 이모지를 **Font Awesome 6.5.2 아이콘**으로 교체.
+
+### 한 일
+- **이모지 → Font Awesome**: `components/Icon.jsx` 래퍼 추가, CDN(index.html) 연결.
+  features/stamps/gallery/brand/schedule/bring/material 전부 FA 클래스로 교체.
+  (본문 속 흐름 화살표 `→` 는 의미 텍스트라 유지)
+- **영상 → 학습자료**: `Lesson.jsx` 전면 재작성 — YouTube 플레이어 제거,
+  세션별 **학습목표 · 핵심개념 · 대면 실습 · 사용 도구 · 도장깨기 연결**로 구성.
+- **커리큘럼 = 하루 타임테이블**: 4교시 15세션, 교시별 시간대(09:00–18:00) + 준비물 안내.
+- **site.js**: 각 세션에 objectives/keypoints/practice/tools 추가, course.schedule·bring 추가,
+  히어로를 "하루 만에 짓는 AI 홍보 실무" 대면 워크숍 톤으로.
+- **정적화**: 로그인/결제/진도 대시보드 미사용 → Auth·Progress 컨텍스트, lib(supabase/db/payment),
+  Login·YouTube 컴포넌트 삭제. App에서 Provider 제거. 도장깨기만 localStorage 사용.
+- 결과: 번들 465kB → **259kB**(Supabase 트리셰이킹), 빌드 정상.
+
+---
 
 ## 2026-06-11 · 초기 구축
 

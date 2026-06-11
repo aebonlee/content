@@ -1,7 +1,7 @@
 // =========================================================================
 // 사이트 설정 — contents (AI로 만드는 홍보 실무)
 // 과정: [인재키움] AI로 만드는 홍보 실무 — 콘텐츠·이미지·페이지까지 자동화 완성
-// 형태: 오프라인 집합교육(1일 워크숍). 이 사이트는 그 "대면 강의 학습자료".
+// 형태: 오프라인 집합교육(1일 워크숍, 8시간). 이 사이트는 그 "대면 강의 학습자료".
 // 아이콘은 Font Awesome 클래스 문자열로 관리한다.
 // =========================================================================
 
@@ -9,7 +9,7 @@ export const site = {
   brand: 'AI 홍보 스튜디오',
   tagline: '콘텐츠·이미지·페이지까지, AI로 한 번에',
   description:
-    '하루 만에 끝내는 AI 홍보 실무 집합 워크숍. 카피·SNS·생성형 이미지·랜딩페이지까지 강사와 마주 앉아 직접 만드는 8시간 대면 과정의 학습자료.',
+    '하루 만에 끝내는 AI 홍보 실무 집합 워크숍. 콘텐츠·이미지·페이지부터 반복업무 자동화까지 강사와 마주 앉아 직접 만드는 8시간 대면 과정의 학습자료.',
   url: import.meta.env.VITE_SITE_URL || 'https://contents.dreamitbiz.com',
   contact: 'hello@dreamitbiz.com',
 }
@@ -28,23 +28,24 @@ export const course = {
     note: '오프라인 필수 참석(출석 80% 이상) · 선착순 30명',
   },
   // 50분 단위 8교시 시간표 (교시 사이 10분 휴식, 점심 11:50–13:00)
+  // M1~M6 = 1~6교시(각 1H), M7 = 7~8교시(2H)
   periods: [
     { label: '1교시', time: '09:00–09:50', part: 1 },
     { label: '2교시', time: '10:00–10:50', part: 2 },
-    { label: '3교시', time: '11:00–11:50', part: 2 },
+    { label: '3교시', time: '11:00–11:50', part: 3 },
     { label: '점심', time: '11:50–13:00', lunch: true },
-    { label: '4교시', time: '13:00–13:50', part: 3 },
-    { label: '5교시', time: '14:00–14:50', part: 3 },
-    { label: '6교시', time: '15:00–15:50', part: 4 },
-    { label: '7교시', time: '16:00–16:50', part: 4 },
-    { label: '8교시', time: '17:00–17:50', part: 4 },
+    { label: '4교시', time: '13:00–13:50', part: 4 },
+    { label: '5교시', time: '14:00–14:50', part: 5 },
+    { label: '6교시', time: '15:00–15:50', part: 6 },
+    { label: '7교시', time: '16:00–16:50', part: 7 },
+    { label: '8교시', time: '17:00–17:50', part: 7 },
   ],
   badges: ['초급', '8시간', '대면 워크숍', '실습 100%'],
   // 준비물 — 대면 워크숍 참석자 안내
   bring: [
     { icon: 'fa-solid fa-laptop', label: '노트북', desc: '실습은 본인 노트북으로 진행합니다.' },
     { icon: 'fa-solid fa-plug', label: '충전기', desc: '하루 종일 사용하니 어댑터를 챙기세요.' },
-    { icon: 'fa-solid fa-key', label: 'AI 도구 계정', desc: 'ChatGPT 등 사전에 로그인해 두면 좋습니다.' },
+    { icon: 'fa-solid fa-key', label: 'AI 도구 계정', desc: 'ChatGPT·Google 계정 등 사전에 로그인해 두면 좋습니다.' },
     { icon: 'fa-solid fa-box-archive', label: '홍보 소재', desc: '실제 제품·서비스 정보를 가져오면 결과물이 살아납니다.' },
   ],
 }
@@ -55,149 +56,167 @@ export const hero = {
   title: ['하루 만에 짓는,', 'AI 홍보 실무'],
   highlight: '하루',           // 형광펜이 그어질 단어
   body:
-    '강사와 마주 앉아 직접 만듭니다. 카피 한 줄부터 이미지, 랜딩페이지까지 — 8시간 집합 워크숍에서 내 손으로 완성하는 홍보 자동화. 이 사이트는 그 학습자료입니다.',
+    '강사와 마주 앉아 직접 만듭니다. 홍보 기획·콘텐츠·시각자료·페이지부터 반복업무 자동화까지 — 8시간 집합 워크숍에서 내 손으로 완성하는 홍보 자동화. 이 사이트는 그 학습자료입니다.',
   ctaPrimary: { label: '학습자료 열기', to: '/curriculum' },
   ctaGhost: { label: '도장깨기', to: '/stamps' },
 }
 
 // 사이트가 약속하는 가치 (3개 절제)
 export const features = [
-  { icon: 'fa-solid fa-pen-nib', title: '콘텐츠 자동화', body: '카피·SNS·보도자료를 AI로. 톤은 유지하고 분량은 늘립니다.' },
-  { icon: 'fa-solid fa-palette', title: '이미지 자동화', body: '브랜드 무드 이미지·카드뉴스·썸네일을 프롬프트 한 줄로.' },
-  { icon: 'fa-solid fa-window-maximize', title: '페이지 자동화', body: '노코드로 홍보 페이지를 만들고, 콘텐츠를 한 번에 연결해 배포합니다.' },
+  { icon: 'fa-solid fa-pen-nib', title: '콘텐츠 자동화', body: '소개문·SNS·블로그·카드뉴스 문안을 AI로. 톤은 유지하고 분량은 늘립니다.' },
+  { icon: 'fa-solid fa-palette', title: '시각자료 제작', body: '배너·카드뉴스·썸네일을 이미지 생성 AI로. 문구와 톤을 맞춥니다.' },
+  { icon: 'fa-solid fa-window-maximize', title: '페이지 & 자동화', body: 'Google Stitch로 페이지를 기획하고, 반복 홍보업무를 템플릿화합니다.' },
 ]
 
 // =========================================================================
-// 커리큘럼 — 1일(09:00–18:00) 4교시 / 15세션. 각 세션은 대면 학습자료를 가진다.
-// 휴넷 상세 차시는 비공개 영역이라 과정명 기준으로 설계.
+// 커리큘럼 — 공식 7개 모듈 / 14세션 (1일 8시간, M1~M6 각 1H + M7 2H).
+// 50분 단위 8교시에 배치: M1~M6 → 1~6교시, M7 → 7~8교시.
 // 각 lesson: objectives(학습목표) · keypoints(핵심개념) · practice(대면 실습) · tools(도구)
 // =========================================================================
 export const modules = [
   {
-    id: 'm1', no: 1, period: '1교시', time: '09:00–09:50', title: 'AI 홍보 실무 시작하기',
-    summary: '왜 지금 AI 홍보 자동화인가. 도구 지도를 그리고 프롬프트 기본기를 잡습니다.',
+    id: 'm1', no: 1, period: '1교시', time: '09:00–09:50', hours: 1,
+    title: 'AI 기반 업무효율화의 이해',
+    summary: '생성형 AI와 홍보 업무 변화 이해.',
     lessons: [
       {
-        id: 'l1-1', title: '홍보 업무는 어떻게 바뀌는가', minutes: 25,
-        objectives: ['AI 도입 전후 홍보 업무 흐름의 차이를 설명할 수 있다.'],
-        keypoints: ['반복 작업과 창의 작업의 분리', 'AI는 초안 생성기 — 최종 판단은 사람', '시간 절약 지점 찾기'],
-        practice: '내 홍보 업무 중 "매번 반복되는 일" 3가지를 포스트잇에 적어 벽에 붙이고 공유합니다.',
-        tools: ['포스트잇', '화이트보드'],
+        id: 'l1-1', title: '생성형 AI의 개념과 홍보 업무의 변화',
+        objectives: ['생성형 AI가 홍보 업무를 어떻게 바꾸는지 설명할 수 있다.'],
+        keypoints: ['생성형 AI의 기본 개념', '기존 홍보 프로세스의 변화', '반복 업무와 창의 업무의 분리'],
+        practice: '내 홍보 업무 중 AI로 바꿀 수 있는 일 3가지를 적어 공유합니다.',
+        tools: ['ChatGPT', 'Claude'],
       },
       {
-        id: 'l1-2', title: '실무에 쓰는 AI 도구 지도', minutes: 30,
-        objectives: ['콘텐츠·이미지·페이지 단계별 대표 도구를 구분할 수 있다.'],
-        keypoints: ['글: ChatGPT·Claude', '이미지: Midjourney·DALL·E·ImageFX', '페이지: Framer·Genspark·Canva'],
-        practice: '오늘 쓸 도구에 모두 로그인하고, 무료/유료 한도를 표에 정리합니다.',
-        tools: ['ChatGPT', 'Claude', 'ImageFX'],
-      },
-      {
-        id: 'l1-3', title: '타깃·톤 정의와 프롬프트 기본기', minutes: 25,
-        objectives: ['좋은 프롬프트의 4요소(역할·맥락·작업·형식)를 적용할 수 있다.'],
-        keypoints: ['누구에게/무엇을/왜', '톤앤매너 키워드 고정', '예시(few-shot)의 힘'],
-        practice: '내 브랜드의 타깃과 톤을 한 문장으로 정의합니다. → 도장깨기 미션 01',
+        id: 'l1-2', title: '중소기업 실무 적용 사례와 활용 포인트',
+        objectives: ['업무효율화 관점에서 우리 회사의 AI 활용 포인트를 찾을 수 있다.'],
+        keypoints: ['중소기업 실무 적용 사례', '업무효율화 관점의 활용 포인트', '비용 대비 효과'],
+        practice: '우리 회사에 바로 적용할 수 있는 활용 포인트 1가지를 정리합니다.',
         tools: ['ChatGPT'],
       },
     ],
   },
   {
-    id: 'm2', no: 2, period: '2–3교시', time: '10:00–11:50', title: 'AI 콘텐츠 자동화',
-    summary: '카피·SNS 캡션·보도자료를 AI로. 같은 메시지를 톤 유지한 채 변주합니다.',
+    id: 'm2', no: 2, period: '2교시', time: '10:00–10:50', hours: 1,
+    title: 'AI 기반 홍보 기획 실무',
+    summary: '홍보 목적 설정과 프롬프트 작성법.',
     lessons: [
       {
-        id: 'l2-1', title: '한 줄 카피 10종 뽑기', minutes: 25,
-        objectives: ['하나의 제품으로 톤이 다른 헤드라인을 대량 생성할 수 있다.'],
-        keypoints: ['감성형·정보형·도발형 톤 지정', '글자 수 제약 주기', '베스트 3 고르는 기준'],
-        practice: '내 제품으로 카피 10개를 뽑고, 옆 사람과 베스트 3을 교차 평가합니다. → 미션 02',
+        id: 'l2-1', title: '홍보 목적 정리 → 타깃고객 설정 → 핵심 메시지 도출',
+        objectives: ['홍보 목적·타깃·핵심 메시지를 한 문장으로 정리할 수 있다.'],
+        keypoints: ['홍보 목적 정의', '타깃고객 페르소나 설정', '핵심 메시지 도출'],
+        practice: '내 브랜드의 목적·타깃·핵심 메시지를 한 문장으로 정리합니다. → 미션 01',
         tools: ['ChatGPT', 'Claude'],
       },
       {
-        id: 'l2-2', title: 'SNS 캡션 + 해시태그 자동 생성', minutes: 25,
-        objectives: ['플랫폼 규격에 맞는 캡션과 해시태그 세트를 만들 수 있다.'],
-        keypoints: ['플랫폼별 길이·말투', '대형/중형/롱테일 해시태그 믹스', '이모지 대신 명료함'],
-        practice: '인스타그램용 캡션 1개 + 해시태그 10개를 생성합니다. → 미션 03',
+        id: 'l2-2', title: '결과 품질을 높이는 프롬프트 작성 원리와 실습',
+        objectives: ['좋은 프롬프트의 구성 요소를 적용해 결과 품질을 높일 수 있다.'],
+        keypoints: ['역할·맥락·작업·형식 4요소', '예시(few-shot) 제공', '반복 개선'],
+        practice: '같은 요청을 막연한 버전과 구체적 버전으로 써서 결과를 비교합니다. → 미션 02',
         tools: ['ChatGPT'],
-      },
-      {
-        id: 'l2-3', title: '블로그·보도자료 초안 자동화', minutes: 25,
-        objectives: ['제목·리드·본문·인용 구조의 초안을 자동 생성할 수 있다.'],
-        keypoints: ['역피라미드 구조', '사실/주장 분리', '인용문 자리 비워두기'],
-        practice: '우리 회사 소식으로 보도자료 1편 초안을 생성합니다. → 미션 04',
-        tools: ['Claude'],
-      },
-      {
-        id: 'l2-4', title: '톤앤매너 유지하며 대량 변주', minutes: 15,
-        objectives: ['같은 메시지를 채널별로 일관된 톤으로 변주할 수 있다.'],
-        keypoints: ['스타일 가이드를 프롬프트에 고정', '재사용 템플릿 만들기', '검수 체크리스트'],
-        practice: '앞서 만든 카피를 블로그·문자·포스터 버전으로 변주합니다.',
-        tools: ['ChatGPT', 'Claude'],
       },
     ],
   },
   {
-    id: 'm3', no: 3, period: '4–5교시', time: '13:00–14:50', title: 'AI 이미지 자동화',
-    summary: '생성형 이미지 도구로 브랜드 무드·카드뉴스·썸네일·배너를 만듭니다.',
+    id: 'm3', no: 3, period: '3교시', time: '11:00–11:50', hours: 1,
+    title: 'AI 기반 콘텐츠 작성 실습',
+    summary: 'SNS·블로그·홍보문 자동화.',
     lessons: [
       {
-        id: 'l3-1', title: '생성형 이미지 도구 한눈에', minutes: 20,
-        objectives: ['용도별로 어떤 이미지 도구를 쓸지 판단할 수 있다.'],
-        keypoints: ['무료/유료·상업적 이용 범위', '한글 프롬프트 vs 영어 프롬프트', '저작권·초상권 주의'],
-        practice: '오늘 쓸 이미지 도구 1개를 정하고 첫 이미지를 테스트로 만들어 봅니다.',
-        tools: ['ImageFX', 'DALL·E'],
+        id: 'l3-1', title: '제품·서비스 소개문과 홍보 문안 작성',
+        objectives: ['제품·서비스 소개문을 톤을 유지하며 작성할 수 있다.'],
+        keypoints: ['소개문 구조', '톤앤매너 유지', '길이 조절'],
+        practice: '내 제품·서비스 소개문 1편을 AI로 작성합니다. → 미션 03',
+        tools: ['ChatGPT', 'Claude'],
       },
       {
-        id: 'l3-2', title: '브랜드 무드 이미지 만들기', minutes: 30,
-        objectives: ['색·질감·구도·금지요소를 명시해 의도한 비주얼을 얻을 수 있다.'],
-        keypoints: ['프롬프트 구조: 피사체+스타일+조명+색', '--no 로 금지요소 빼기', '시드 고정으로 일관성'],
-        practice: '브랜드 무드를 담은 이미지 1장을 완성합니다. → 미션 05',
-        tools: ['Midjourney', 'ImageFX'],
+        id: 'l3-2', title: 'SNS 게시글·블로그 초안·행사 안내문·카드뉴스 문구',
+        objectives: ['채널별 홍보 문안을 한 번에 생성할 수 있다.'],
+        keypoints: ['SNS 게시글·해시태그', '블로그 초안', '행사 안내문·카드뉴스 문구'],
+        practice: 'SNS 게시글 1개 + 카드뉴스 문구 세트를 생성합니다. → 미션 04',
+        tools: ['ChatGPT'],
+      },
+    ],
+  },
+  {
+    id: 'm4', no: 4, period: '4교시', time: '13:00–13:50', hours: 1,
+    title: 'AI 기반 시각자료 제작',
+    summary: '이미지 생성 AI를 활용한 홍보물 제작.',
+    lessons: [
+      {
+        id: 'l4-1', title: '배너·카드뉴스·썸네일 등 시각자료 초안 제작',
+        objectives: ['이미지 생성 AI로 홍보용 시각자료 초안을 만들 수 있다.'],
+        keypoints: ['이미지 프롬프트 구조', '채널 규격(배너·썸네일)', '무료 도구 활용'],
+        practice: '배너 또는 썸네일 1종을 제작합니다. → 미션 05',
+        tools: ['ImageFX', 'DALL·E', 'Canva AI'],
       },
       {
-        id: 'l3-3', title: '카드뉴스·썸네일·배너 제작', minutes: 30,
-        objectives: ['동일 톤으로 이어지는 비주얼 세트를 만들 수 있다.'],
-        keypoints: ['같은 스타일 키워드 재사용', '채널별 규격(1:1·16:9)', '텍스트는 편집 도구에서 얹기'],
-        practice: '카드뉴스 또는 썸네일 1세트(2~3장)를 만듭니다. → 미션 06',
-        tools: ['Canva AI', 'DALL·E'],
-      },
-      {
-        id: 'l3-4', title: '보정·확장·배경 제거 자동화', minutes: 20,
-        objectives: ['생성 이미지를 실무 규격으로 후처리할 수 있다.'],
-        keypoints: ['배경 제거·확장(outpaint)', '업스케일', '브랜드 컬러 보정'],
-        practice: '만든 이미지의 배경을 제거하고 채널 규격으로 확장합니다.',
+        id: 'l4-2', title: '이미지와 문구의 일관성 확보 방법',
+        objectives: ['이미지와 카피의 톤을 일치시킬 수 있다.'],
+        keypoints: ['동일 스타일 키워드 재사용', '컬러·폰트 일관성', '문구는 편집 도구에서 얹기'],
+        practice: '앞서 만든 문구와 어울리는 카드뉴스 1세트를 완성합니다. → 미션 06',
         tools: ['Canva AI'],
       },
     ],
   },
   {
-    id: 'm4', no: 4, period: '6–8교시', time: '15:00–17:50', title: '페이지 & 워크플로 자동화 완성',
-    summary: '노코드로 홍보 페이지를 만들고, 콘텐츠→이미지→페이지를 하나로 잇습니다.',
+    id: 'm5', no: 5, period: '5교시', time: '14:00–14:50', hours: 1,
+    title: 'AI 기반 UI 시안 제작',
+    summary: 'Google Stitch를 활용한 홍보용 페이지 기획.',
     lessons: [
       {
-        id: 'l4-1', title: '노코드로 랜딩·홍보 페이지 생성', minutes: 35,
-        objectives: ['노코드 도구로 홍보 랜딩페이지를 만들 수 있다.'],
-        keypoints: ['프롬프트로 페이지 생성', '섹션 구조(히어로·특징·CTA)', '모바일 미리보기'],
-        practice: '앞서 만든 카피·이미지를 채워 랜딩페이지 1개를 만듭니다. → 미션 07',
-        tools: ['Framer', 'Genspark'],
+        id: 'l5-1', title: '자연어 기반 UI 시안 생성 (Google Stitch)',
+        objectives: ['자연어 설명으로 홍보용 UI 시안을 생성할 수 있다.'],
+        keypoints: ['Google Stitch 개요', '자연어 → UI 시안 생성', '시안 수정·반복'],
+        practice: 'Google Stitch로 홍보용 화면 시안 1개를 생성합니다. → 미션 07',
+        tools: ['Google Stitch'],
       },
       {
-        id: 'l4-2', title: '콘텐츠를 페이지로 한 번에 연결', minutes: 30,
-        objectives: ['만든 콘텐츠·이미지를 페이지에 일관되게 배치할 수 있다.'],
-        keypoints: ['톤 일치 점검', '링크·연락처·폼 연결', '공개 URL 발급'],
-        practice: '페이지를 공개하고 URL을 옆 사람에게 공유해 첫 피드백을 받습니다.',
-        tools: ['Framer', 'Carrd'],
+        id: 'l5-2', title: '랜딩페이지·이벤트 페이지 구조 설계',
+        objectives: ['홍보 페이지의 화면 구조와 흐름을 설계할 수 있다.'],
+        keypoints: ['랜딩·이벤트 페이지 구조', '화면 흐름 설계', '핵심 화면 구성'],
+        practice: '내 캠페인용 페이지 구조(와이어프레임)를 시안으로 잡습니다.',
+        tools: ['Google Stitch'],
+      },
+    ],
+  },
+  {
+    id: 'm6', no: 6, period: '6교시', time: '15:00–15:50', hours: 1,
+    title: 'AI 기반 페이지 구성 실무',
+    summary: '상세페이지 및 홍보페이지 구조 설계.',
+    lessons: [
+      {
+        id: 'l6-1', title: '섹션 구성과 CTA 문구 작성',
+        objectives: ['페이지 섹션 구성과 CTA 문구를 설계할 수 있다.'],
+        keypoints: ['히어로·특징·후기·CTA 섹션', 'CTA 문구 작성 원리', '설득 흐름'],
+        practice: '상세페이지 섹션 구성과 CTA 문구 3종을 작성합니다. → 미션 08',
+        tools: ['ChatGPT', 'Google Stitch'],
       },
       {
-        id: 'l4-3', title: '홍보 자동화 워크플로 설계', minutes: 35,
-        objectives: ['반복 홍보 업무를 단계로 쪼개 자동화 흐름을 설계할 수 있다.'],
-        keypoints: ['트리거→생성→검수→발행', '사람 검수 지점 정하기', '노코드 자동화 도구 개요'],
-        practice: '내 업무 1개를 콘텐츠→이미지→페이지 흐름으로 그립니다. → 미션 08',
-        tools: ['Make', 'Zapier'],
+        id: 'l6-2', title: '사용자 흐름 설계와 서비스 소개형 페이지 구성',
+        objectives: ['사용자 흐름에 맞춰 서비스 소개형 페이지를 구성할 수 있다.'],
+        keypoints: ['사용자 여정(인지→관심→행동)', '정보 우선순위', '서비스 소개형 구조'],
+        practice: '서비스 소개형 페이지 1개를 사용자 흐름에 맞춰 구성합니다.',
+        tools: ['Google Stitch', 'Framer'],
+      },
+    ],
+  },
+  {
+    id: 'm7', no: 7, period: '7–8교시', time: '16:00–17:50', hours: 2,
+    title: 'AI 기반 반복업무 자동화',
+    summary: '홍보업무 템플릿화·재사용 전략 + 결과물 완성과 피드백.',
+    lessons: [
+      {
+        id: 'l7-1', title: '홍보업무 템플릿화와 재사용 전략',
+        objectives: ['반복 홍보업무를 템플릿화하고 실무 적용 프로세스를 설계할 수 있다.'],
+        keypoints: ['반복 홍보업무 템플릿화', '콘텐츠 재활용 방법', '실무 적용 프로세스', '개인별 활용 시나리오'],
+        practice: '내 반복 홍보업무 1개를 재사용 템플릿으로 만들고 활용 시나리오를 작성합니다.',
+        tools: ['ChatGPT', '노션'],
       },
       {
-        id: 'l4-4', title: '나만의 홍보 자동화 루틴 완성', minutes: 30,
-        objectives: ['오늘 만든 결과물을 내 실무 루틴으로 정리할 수 있다.'],
-        keypoints: ['재사용 프롬프트 모음', '체크리스트화', '다음 주에 바로 쓸 1가지'],
-        practice: '오늘의 결과물을 갤러리처럼 정리하고, 현업 적용 계획 1줄을 발표합니다.',
+        id: 'l7-2', title: '결과물 완성 및 피드백',
+        objectives: ['오늘 만든 결과물을 완성하고 현업 적용 방안을 정리할 수 있다.'],
+        keypoints: ['개인·팀별 결과물 완성', '발표 및 피드백', '현업 적용 방안', '실무 활용 체크리스트'],
+        practice: '8개 미션 결과물을 모아 발표하고, 실무 활용 체크리스트를 작성합니다.',
         tools: ['노션', '구글 문서'],
       },
     ],
@@ -205,34 +224,35 @@ export const modules = [
 ]
 
 // =========================================================================
-// 도장깨기 — 대면 워크숍에서 "직접 만들어 보는" 8개 미션.
+// 도장깨기 — 대면 워크숍에서 "직접 만들어 보는" 8개 미션 (M2~M6 핵심 결과물).
 // 각 미션을 완료하면 도장을 찍는다(로컬 저장, 로그인 불필요).
+// module: 해당 미션이 속한 모듈 번호.
 // =========================================================================
 export const stamps = [
-  { id: 's1', no: 1, icon: 'fa-solid fa-bullseye', module: 1, title: '타깃 한 줄 정의',
-    mission: '우리 브랜드/제품의 타깃과 핵심 메시지를 한 문장으로 정리한다.',
-    tip: '“누구에게 / 무엇을 / 왜”를 한 줄에 — 프롬프트의 출발점.' },
-  { id: 's2', no: 2, icon: 'fa-solid fa-pen-fancy', module: 2, title: 'AI 카피 3종',
-    mission: '같은 제품으로 톤이 다른 헤드라인 카피 3개를 만든다.',
-    tip: '감성형·정보형·도발형 — 세 가지 톤을 지정해 비교한다.' },
-  { id: 's3', no: 3, icon: 'fa-solid fa-hashtag', module: 2, title: 'SNS 캡션 세트',
-    mission: 'SNS 게시물 캡션 1개 + 해시태그 10개를 생성한다.',
-    tip: '플랫폼(인스타/스레드)과 글자 수 제한을 함께 알려준다.' },
-  { id: 's4', no: 4, icon: 'fa-solid fa-newspaper', module: 2, title: '보도자료 초안',
-    mission: '블로그 글 또는 보도자료 1편의 초안을 자동 생성한다.',
-    tip: '제목·리드·본문·인용 구조를 먼저 지정하면 완성도가 오른다.' },
-  { id: 's5', no: 5, icon: 'fa-solid fa-palette', module: 3, title: '브랜드 이미지',
-    mission: '브랜드 무드를 담은 생성형 이미지 1장을 만든다.',
-    tip: '색·질감·구도·금지요소를 프롬프트에 명시한다.' },
-  { id: 's6', no: 6, icon: 'fa-solid fa-images', module: 3, title: '카드뉴스 1세트',
-    mission: '카드뉴스 또는 썸네일 비주얼 1세트를 제작한다.',
-    tip: '동일 톤을 유지하려면 같은 스타일 키워드를 재사용한다.' },
-  { id: 's7', no: 7, icon: 'fa-solid fa-rocket', module: 4, title: '랜딩페이지 배포',
-    mission: '노코드 도구로 홍보 랜딩페이지 1개를 만들어 공개한다.',
-    tip: '앞서 만든 카피와 이미지를 그대로 가져와 채운다.' },
-  { id: 's8', no: 8, icon: 'fa-solid fa-gears', module: 4, title: '자동화 루틴',
-    mission: '콘텐츠→이미지→페이지로 이어지는 나만의 워크플로를 정리한다.',
-    tip: '반복되는 홍보 업무 한 가지를 골라 단계로 쪼갠다.' },
+  { id: 's1', no: 1, icon: 'fa-solid fa-bullseye', module: 2, title: '홍보 메시지 정의',
+    mission: '홍보 목적·타깃고객·핵심 메시지를 한 문장으로 정리한다.',
+    tip: '“누구에게 / 무엇을 / 왜”를 한 줄에 — 모든 프롬프트의 출발점.' },
+  { id: 's2', no: 2, icon: 'fa-solid fa-keyboard', module: 2, title: '고품질 프롬프트',
+    mission: '같은 요청을 막연한 버전과 구체적 버전으로 써서 결과를 비교한다.',
+    tip: '역할·맥락·작업·형식 4요소를 넣고, 예시를 함께 준다.' },
+  { id: 's3', no: 3, icon: 'fa-solid fa-pen-fancy', module: 3, title: '제품 홍보 문안',
+    mission: '내 제품·서비스 소개문 1편을 AI로 작성한다.',
+    tip: '톤앤매너 키워드를 고정하면 일관된 글이 나온다.' },
+  { id: 's4', no: 4, icon: 'fa-solid fa-hashtag', module: 3, title: 'SNS·카드뉴스 문구',
+    mission: 'SNS 게시글 1개 + 카드뉴스 문구 세트를 생성한다.',
+    tip: '플랫폼과 글자 수 제한을 함께 알려준다.' },
+  { id: 's5', no: 5, icon: 'fa-solid fa-image', module: 4, title: '홍보 시각자료',
+    mission: '배너 또는 썸네일 1종을 이미지 생성 AI로 만든다.',
+    tip: '채널 규격(비율)과 금지 요소를 프롬프트에 명시한다.' },
+  { id: 's6', no: 6, icon: 'fa-solid fa-images', module: 4, title: '카드뉴스 1세트',
+    mission: '문구와 톤이 일치하는 카드뉴스 1세트를 완성한다.',
+    tip: '같은 스타일 키워드를 재사용해 톤을 맞춘다.' },
+  { id: 's7', no: 7, icon: 'fa-solid fa-object-group', module: 5, title: 'UI 시안(Stitch)',
+    mission: 'Google Stitch로 홍보용 페이지 UI 시안 1개를 생성한다.',
+    tip: '원하는 화면을 자연어로 설명하고, 시안을 반복 수정한다.' },
+  { id: 's8', no: 8, icon: 'fa-solid fa-window-maximize', module: 6, title: '홍보페이지 구성',
+    mission: '상세페이지 섹션 구성과 CTA 문구 3종을 작성한다.',
+    tip: '사용자 흐름(인지→관심→행동) 순으로 섹션을 배치한다.' },
 ]
 
 // =========================================================================
@@ -247,24 +267,24 @@ export const galleryCategories = [
 ]
 
 export const gallery = [
-  { id: 'g1', cat: 'content', icon: 'fa-solid fa-pen-fancy', title: '광고 헤드라인 10종',
-    desc: '하나의 제품을 톤별로 변주한 카피 모음.', tool: 'ChatGPT · Claude', stamp: 's2' },
-  { id: 'g2', cat: 'content', icon: 'fa-solid fa-hashtag', title: 'SNS 캡션 & 해시태그',
-    desc: '플랫폼 맞춤 캡션과 해시태그 세트.', tool: 'ChatGPT', stamp: 's3' },
-  { id: 'g3', cat: 'content', icon: 'fa-solid fa-newspaper', title: '보도자료 초안',
-    desc: '제목·리드·본문 구조를 갖춘 초안.', tool: 'Claude', stamp: 's4' },
-  { id: 'g4', cat: 'image', icon: 'fa-solid fa-palette', title: '브랜드 무드 이미지',
-    desc: '색·질감·구도를 지정해 만든 비주얼.', tool: 'Midjourney · ImageFX', stamp: 's5' },
+  { id: 'g1', cat: 'content', icon: 'fa-solid fa-pen-fancy', title: '제품·서비스 소개문',
+    desc: '톤을 유지한 홍보 문안.', tool: 'ChatGPT · Claude', stamp: 's3' },
+  { id: 'g2', cat: 'content', icon: 'fa-solid fa-hashtag', title: 'SNS·카드뉴스 문구',
+    desc: '채널별 캡션·해시태그·문구 세트.', tool: 'ChatGPT', stamp: 's4' },
+  { id: 'g3', cat: 'content', icon: 'fa-solid fa-newspaper', title: '블로그·행사 안내문',
+    desc: '블로그 초안·행사 안내문 초안.', tool: 'Claude', stamp: 's3' },
+  { id: 'g4', cat: 'image', icon: 'fa-solid fa-image', title: '홍보 배너·썸네일',
+    desc: '채널 규격에 맞춘 홍보 비주얼.', tool: 'ImageFX · DALL·E', stamp: 's5' },
   { id: 'g5', cat: 'image', icon: 'fa-solid fa-images', title: '카드뉴스 세트',
-    desc: '동일 톤으로 이어지는 카드 시리즈.', tool: 'DALL·E · Canva AI', stamp: 's6' },
-  { id: 'g6', cat: 'image', icon: 'fa-solid fa-wand-magic-sparkles', title: '썸네일·배너',
-    desc: '채널 규격에 맞춘 홍보 비주얼.', tool: 'ImageFX', stamp: 's6' },
-  { id: 'g7', cat: 'page', icon: 'fa-solid fa-rocket', title: '제품 랜딩페이지',
-    desc: '카피와 이미지를 채운 홍보 페이지.', tool: 'Framer · Genspark', stamp: 's7' },
-  { id: 'g8', cat: 'page', icon: 'fa-solid fa-link', title: '원페이지 프로모션',
-    desc: '이벤트/캠페인용 단일 페이지.', tool: 'Notion · Carrd', stamp: 's7' },
-  { id: 'g9', cat: 'page', icon: 'fa-solid fa-diagram-project', title: '홍보 자동화 워크플로',
-    desc: '콘텐츠→이미지→페이지 연결 루틴.', tool: 'Make · Zapier', stamp: 's8' },
+    desc: '동일 톤으로 이어지는 카드 시리즈.', tool: 'Canva AI', stamp: 's6' },
+  { id: 'g6', cat: 'image', icon: 'fa-solid fa-palette', title: '브랜드 무드 비주얼',
+    desc: '색·질감을 지정해 만든 이미지.', tool: 'Midjourney · ImageFX', stamp: 's5' },
+  { id: 'g7', cat: 'page', icon: 'fa-solid fa-object-group', title: 'UI 시안 (Google Stitch)',
+    desc: '자연어로 만든 홍보 페이지 시안.', tool: 'Google Stitch', stamp: 's7' },
+  { id: 'g8', cat: 'page', icon: 'fa-solid fa-window-maximize', title: '랜딩·이벤트 페이지',
+    desc: '섹션·CTA를 갖춘 홍보 페이지.', tool: 'Google Stitch · Framer', stamp: 's8' },
+  { id: 'g9', cat: 'page', icon: 'fa-solid fa-rectangle-list', title: '상세·서비스 소개 페이지',
+    desc: '사용자 흐름에 맞춘 페이지 구성.', tool: 'Framer', stamp: 's8' },
 ]
 
 // =========================================================================
@@ -285,13 +305,14 @@ export const nav = [
 export const about = {
   lead: 'AI로 홍보 실무 전 과정을 자동화한다. 듣기만 하는 강의가 아니라, 강사와 마주 앉아 내 손으로 결과물을 만드는 하루짜리 집합 워크숍입니다.',
   intro:
-    '카피 한 줄을 다듬는 데 한나절, 이미지 한 장을 받는 데 며칠. 홍보 담당자의 시간은 늘 부족합니다. 이 과정은 반복되는 홍보 업무를 AI 도구로 자동화하는 법을 콘텐츠 → 이미지 → 페이지 순서로 직접 만들며 익힙니다. 하루가 끝나면 "오늘 만든 결과물"과 "내일 바로 쓸 자동화 루틴"이 손에 남습니다.',
+    '카피 한 줄을 다듬는 데 한나절, 이미지 한 장을 받는 데 며칠. 홍보 담당자의 시간은 늘 부족합니다. 이 과정은 업무효율화의 이해부터 홍보 기획·콘텐츠·시각자료·UI 시안·페이지 구성, 그리고 반복업무 자동화까지 7개 모듈을 직접 만들며 익힙니다. 하루가 끝나면 "오늘 만든 결과물"과 "내일 바로 쓸 자동화 루틴"이 손에 남습니다.',
   outcomes: [
-    '톤이 다른 광고 카피를 한 번에 여러 개 뽑아낼 수 있다.',
-    'SNS 캡션·해시태그·보도자료 초안을 AI로 자동 생성할 수 있다.',
-    '브랜드 무드에 맞는 이미지·카드뉴스·썸네일을 만들 수 있다.',
-    '노코드로 홍보 랜딩페이지를 만들어 공개할 수 있다.',
-    '콘텐츠→이미지→페이지로 이어지는 나만의 자동화 루틴을 설계할 수 있다.',
+    '생성형 AI로 홍보 업무를 어디서 줄일지 판단할 수 있다.',
+    '홍보 목적·타깃·핵심 메시지를 정리하고 고품질 프롬프트를 쓸 수 있다.',
+    '제품 소개문·SNS·블로그·카드뉴스 문구를 자동으로 작성할 수 있다.',
+    '배너·카드뉴스·썸네일 등 홍보 시각자료를 만들 수 있다.',
+    'Google Stitch로 홍보용 UI 시안과 페이지 구조를 설계할 수 있다.',
+    '반복 홍보 업무를 템플릿화해 나만의 자동화 루틴을 만들 수 있다.',
   ],
   audience: [
     '홍보·마케팅 실무를 맡고 있는 중소기업 재직자',
@@ -307,14 +328,14 @@ export const community = {
   lead: '워크숍은 하루지만, 배움은 이어집니다. 만든 결과물을 나누고, 막히는 부분을 함께 풉니다.',
   channels: [
     { icon: 'fa-solid fa-comments', label: '오픈 채팅', desc: '실습 중 막힌 부분을 바로 묻고 답하는 실시간 채널.', cta: '참여 안내' },
-    { icon: 'fa-solid fa-share-nodes', label: '결과물 공유', desc: '오늘 만든 카피·이미지·페이지를 서로 보여주고 피드백.', cta: '갤러리 보기', to: '/gallery' },
+    { icon: 'fa-solid fa-share-nodes', label: '결과물 공유', desc: '오늘 만든 콘텐츠·시각자료·페이지를 서로 보여주고 피드백.', cta: '갤러리 보기', to: '/gallery' },
     { icon: 'fa-solid fa-folder-open', label: '자료실', desc: '재사용 프롬프트·도구 링크·치트시트 모음.', cta: '학습강의안', to: '/lecture' },
   ],
   faq: [
     { q: '비전공자도 따라갈 수 있나요?', a: '네. 초급 과정으로, 코딩 없이 노코드·생성형 AI 도구만 사용합니다. 처음부터 함께 만들어 갑니다.' },
-    { q: '어떤 AI 도구를 쓰나요?', a: 'ChatGPT·Claude(글), Midjourney·DALL·E·ImageFX(이미지), Framer·Canva(페이지) 등을 용도별로 다룹니다. 무료 도구 위주로 진행합니다.' },
+    { q: '어떤 AI 도구를 쓰나요?', a: 'ChatGPT·Claude(글), ImageFX·DALL·E·Canva(이미지), Google Stitch·Framer(페이지) 등을 용도별로 다룹니다. 무료 도구 위주로 진행합니다.' },
     { q: '준비물이 있나요?', a: '노트북·충전기, 그리고 실제 홍보할 제품/서비스 정보를 가져오면 결과물이 훨씬 좋아집니다. About 페이지의 준비물을 참고하세요.' },
-    { q: '결과물은 실무에 바로 쓸 수 있나요?', a: '네. 본인 제품·브랜드로 실습하므로, 워크숍이 끝나면 실제 카피·이미지·랜딩페이지가 남습니다.' },
+    { q: '결과물은 실무에 바로 쓸 수 있나요?', a: '네. 본인 제품·브랜드로 실습하므로, 워크숍이 끝나면 실제 문안·시각자료·페이지가 남습니다.' },
   ],
 }
 

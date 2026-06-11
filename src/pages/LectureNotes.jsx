@@ -15,19 +15,9 @@ export default function LectureNotes() {
         <p className="eyeline mono">LECTURE NOTES · 학습강의안</p>
         <h1 className="lecture__title">시간대별 학습자료</h1>
         <p className="lecture__lead">
-          {course.schedule.offline} · 8교시(50분 단위) · {modules.length}개 파트 {totalSessions}개 세션.
+          {course.schedule.offline} · {modules.length}개 모듈 · {totalSessions}개 세션.
           하루의 흐름을 따라 세션마다 <strong>학습목표 · 핵심 개념 · 대면 실습 · 사용 도구</strong>를 담았습니다.
         </p>
-
-        {/* 50분 단위 교시 시간표 */}
-        <ul className="period-table">
-          {course.periods.map((p) => (
-            <li key={p.label} className={`period-table__item${p.lunch ? ' is-lunch' : ''}`}>
-              <span className="period-table__label mono">{p.label}</span>
-              <span className="period-table__time mono">{p.time}</span>
-            </li>
-          ))}
-        </ul>
       </header>
 
       <div className="lecture__layout">
@@ -38,8 +28,8 @@ export default function LectureNotes() {
             {modules.map((m) => (
               <li key={m.id}>
                 <a href={`#kyo-${m.no}`}>
-                  <span className="lecture__rail-time mono">{m.period} · {m.time}</span>
-                  <span className="lecture__rail-name">{m.title}</span>
+                  <span className="lecture__rail-time mono">{m.period} · {m.time}{m.hours === 2 ? ' · 2시간' : ''}</span>
+                  <span className="lecture__rail-name">M{m.no}. {m.title}</span>
                 </a>
               </li>
             ))}
@@ -52,9 +42,9 @@ export default function LectureNotes() {
             <section key={m.id} id={`kyo-${m.no}`} className="lecture__block">
               <div className="lecture__block-head">
                 <span className="lecture__period mono">
-                  <Icon name="fa-regular fa-clock" /> {m.period} · {m.time}
+                  <Icon name="fa-regular fa-clock" /> {m.period} · {m.time}{m.hours === 2 ? ' · 2시간' : ''}
                 </span>
-                <h2 className="lecture__block-title">{m.title}</h2>
+                <h2 className="lecture__block-title">M{m.no}. {m.title}</h2>
                 <p className="lecture__block-summary">{m.summary}</p>
               </div>
 

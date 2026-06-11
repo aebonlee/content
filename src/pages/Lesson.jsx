@@ -4,7 +4,7 @@ import Icon from '../components/Icon'
 
 // 모든 세션을 펼쳐 이전/다음 탐색 (영상 대신 대면 학습자료)
 const flat = modules.flatMap((m) =>
-  m.lessons.map((l) => ({ ...l, moduleTitle: m.title, moduleNo: m.no, moduleTime: m.time, modulePeriod: m.period }))
+  m.lessons.map((l) => ({ ...l, moduleTitle: m.title, moduleNo: m.no, moduleTime: m.time, modulePeriod: m.period, moduleHours: m.hours }))
 )
 
 export default function Lesson() {
@@ -27,7 +27,7 @@ export default function Lesson() {
   return (
     <div className="container lesson">
       <p className="eyeline mono">
-        <Link to="/curriculum">학습자료</Link> · {lesson.modulePeriod} {lesson.moduleTitle}
+        <Link to="/curriculum">학습자료</Link> · M{lesson.moduleNo}. {lesson.moduleTitle}
       </p>
       <h1 className="lesson__title">{lesson.title}</h1>
       <p className="lesson__meta mono">

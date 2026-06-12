@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { modules } from '../config/site'
-import { practiceExamples } from '../config/examples'
+import { practiceExamples, promptElements } from '../config/examples'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 
@@ -22,8 +22,20 @@ export default function Examples() {
         <h1 className="lecture__title">모듈별 실습 예제</h1>
         <p className="lecture__lead">
           {modules.length}개 모듈 × 10개 = 총 {total}개 실습 예제.
-          왼쪽에서 모듈을 고르면 <strong>복붙해서 바로 써보는 실습 과제와 프롬프트</strong>가 열립니다.
+          모든 프롬프트는 아래 <strong>프롬프트 5요소</strong>를 빠짐없이 갖춰 복붙해서 바로 쓸 수 있습니다.
         </p>
+        <ul className="prompt-elements">
+          {promptElements.map((e, i) => (
+            <li key={e.key} className="prompt-elements__item">
+              <span className="prompt-elements__no mono">{i + 1}</span>
+              <span className="prompt-elements__icon" aria-hidden><Icon name={e.icon} /></span>
+              <div>
+                <strong>{e.key}</strong>
+                <span className="prompt-elements__desc">{e.desc}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
       </header>
 
       <div className="lecture__layout">

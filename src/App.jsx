@@ -6,6 +6,7 @@ import About from './pages/About'
 import Curriculum from './pages/Curriculum'
 import LectureNotes from './pages/LectureNotes'
 import Examples from './pages/Examples'
+import PromptLab from './pages/PromptLab'
 import Lesson from './pages/Lesson'
 import Stamps from './pages/Stamps'
 import Gallery from './pages/Gallery'
@@ -26,6 +27,7 @@ export default function App() {
             <Route path="/lecture/:moduleId" element={<LectureNotes />} />
             <Route path="/examples" element={<Examples />} />
             <Route path="/examples/:moduleId" element={<Examples />} />
+            <Route path="/prompt" element={<PromptLab />} />
             <Route path="/lesson/:id" element={<Lesson />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/stamps" element={<Stamps />} />

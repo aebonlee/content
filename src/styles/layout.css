@@ -430,6 +430,29 @@ main { flex: 1; }
 .lecmod__refs { background: var(--wash); border-radius: var(--radius-lg); padding: 1.2rem 1.4rem; margin-bottom: 1.6rem; }
 .lecmod__refs .material__list strong { color: var(--pigment); }
 
+/* 모듈 하단 이해 도장 버튼 (도장깨기 연동, 색/값 변화) */
+.lec-stamp { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  background: #fff; border: 1.5px solid var(--paper-d); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card); padding: 1.1rem 1.4rem; margin: 1.8rem 0 1.4rem;
+  transition: background var(--duration) var(--ease), border-color var(--duration) var(--ease); }
+.lec-stamp.is-earned { border-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--accent) 10%, #fff)); }
+.lec-stamp__info { display: flex; align-items: center; gap: .9rem; }
+.lec-stamp__seal { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
+  background: var(--wash); color: var(--pigment); font-size: 1.3rem; flex-shrink: 0;
+  transition: background var(--duration) var(--ease), color var(--duration) var(--ease); }
+.lec-stamp.is-earned .lec-stamp__seal { background: color-mix(in srgb, var(--accent) 22%, #fff);
+  color: color-mix(in srgb, var(--accent) 80%, var(--ink)); }
+.lec-stamp__info strong { display: block; font-size: 1.02rem; }
+.lec-stamp__sub { display: block; color: var(--ink-70); font-size: .82rem; margin-top: .15rem; }
+.lec-stamp__btn { white-space: nowrap; }
+
+/* 도장깨기 카드 — 획득 상태 표시(색 변화) */
+.stamp-card__earned { display: inline-flex; align-items: center; gap: .4rem; align-self: flex-start;
+  background: color-mix(in srgb, var(--accent) 18%, #fff); color: color-mix(in srgb, var(--accent) 82%, var(--ink));
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); border-radius: 100px;
+  padding: .4rem .8rem; font-size: .8rem; font-weight: 600; margin-top: .5rem; }
+
 /* =========================================================================
    실습예제 — 프롬프트 5요소 범례
    ========================================================================= */

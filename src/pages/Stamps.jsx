@@ -1,37 +1,20 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { stamps, modules } from '../config/site'
+import { useStamps, resetStamps } from '../lib/stamps'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import Highlighter from '../components/Highlighter'
 import Icon from '../components/Icon'
 
-// 도장깨기 — 7개 모듈 = 7개 미션. 모듈마다 핵심 결과물 1개를 직접 만든다.
-// 로그인 없이 브라우저(localStorage)에 진행 상태를 저장한다.
-const STORE_KEY = 'content.stamps.v1'
-
-function loadStamps() {
-  try {
-    return JSON.parse(localStorage.getItem(STORE_KEY)) || {}
-  } catch {
-    return {}
-  }
-}
-
-const moduleName = (no) => modules.find((m) => m.no === no)?.title || ''
+// 도장깨기 — 현황판. 도장은 각 학습강의안 모듈 하단 버튼에서 찍는다(연동).
+// 이 페이지에서는 획득 현황을 보고, 미획득 모듈은 강의안으로 이동한다.
+const moduleOf = (no) => modules.find((m) => m.no === no)
 
 export default function Stamps() {
-  const [done, setDone] = useState(loadStamps)
-
-  useEffect(() => {
-    localStorage.setItem(STORE_KEY, JSON.stringify(done))
-  }, [done])
-
-  const toggle = (id) =>
-    setDone((prev) => ({ ...prev, [id]: !prev[id] }))
+  const done = useStamps()
 
   const reset = () => {
-    if (confirm('도장을 모두 지울까요? 되돌릴 수 없습니다.')) setDone({})
+    if (confirm('도장을 모두 지울까요? 되돌릴 수 없습니다.')) resetStamps()
   }
 
   const count = stamps.filter((s) => done[s.id]).length
@@ -42,7 +25,7 @@ export default function Stamps() {
     <Section
       eyeline="STAMP RALLY"
       title="도장깨기"
-      lead={`워크숍은 듣고 끝내지 않습니다. 모듈마다 1개씩, ${stamps.length}개의 미션을 직접 만들어 도장을 찍으세요. 손으로 남긴 결과물이 강의를 체화합니다.`}
+      lead={`모듈마다 1개씩, ${stamps.length}개의 이해 도장. 각 학습강의안 맨 아래 "이해 완료" 버튼을 누르면 여기에 도장이 채워집니다.`}
     >
       {/* 진행 요약 */}
       <div className="stamp-summary">
@@ -63,7 +46,7 @@ export default function Stamps() {
         <Reveal className="stamp-clear">
           <span className="stamp-clear__seal" aria-hidden><Icon name="fa-solid fa-award" /></span>
           <p>
-            {stamps.length}개 미션을 모두 <Highlighter>완성</Highlighter>했습니다. 이제 당신만의 홍보 자동화 루틴이 손에 남았습니다.
+            {stamps.length}개 모듈을 모두 <Highlighter>이해 완료</Highlighter>했습니다. 이제 당신만의 홍보 자동화 루틴이 손에 남았습니다.
           </p>
           <Link to="/gallery" className="btn btn-accent">결과물 갤러리 보기</Link>
         </Reveal>
@@ -73,6 +56,7 @@ export default function Stamps() {
       <div className="stamp-grid">
         {stamps.map((s, i) => {
           const isDone = !!done[s.id]
+          const m = moduleOf(s.module)
           return (
             <Reveal
               key={s.id}
@@ -87,19 +71,22 @@ export default function Stamps() {
               </div>
               <div className="stamp-card__body">
                 <span className="stamp-card__no mono">
-                  MISSION {String(s.no).padStart(2, '0')} · {moduleName(s.module)}
+                  MISSION {String(s.no).padStart(2, '0')} · {m?.title}
                 </span>
                 <h3 className="stamp-card__title">{s.title}</h3>
                 <p className="stamp-card__mission">{s.mission}</p>
                 <p className="stamp-card__tip mono">
                   <Icon name="fa-regular fa-lightbulb" /> {s.tip}
                 </p>
-                <button
-                  className={`btn btn-sm ${isDone ? 'btn-ghost' : 'btn-primary'}`}
-                  onClick={() => toggle(s.id)}
-                >
-                  {isDone ? '완료 표시 해제' : '도장 찍기'}
-                </button>
+                {isDone ? (
+                  <span className="stamp-card__earned mono">
+                    <Icon name="fa-solid fa-stamp" /> 이해 완료 · 도장 획득
+                  </span>
+                ) : (
+                  <Link to={`/lecture/${m?.id}`} className="btn btn-ghost btn-sm">
+                    강의안에서 학습 <Icon name="fa-solid fa-arrow-right" />
+                  </Link>
+                )}
               </div>
             </Reveal>
           )

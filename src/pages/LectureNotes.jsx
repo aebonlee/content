@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
-import { modules, course } from '../config/site'
+import { modules, course, stamps } from '../config/site'
 import { lectureDetails } from '../config/lectures'
+import { useStamps, toggleStamp } from '../lib/stamps'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 
@@ -16,6 +17,10 @@ export default function LectureNotes() {
   const prev = modules[idx - 1]
   const next = modules[idx + 1]
   const titleOf = (ref) => m.lessons.find((l) => l.id === ref)?.title || ''
+
+  const done = useStamps()
+  const moduleStamp = stamps.find((s) => s.module === m.no)
+  const earned = moduleStamp ? !!done[moduleStamp.id] : false
 
   return (
     <div className="container lecture">
@@ -145,6 +150,32 @@ export default function LectureNotes() {
                     <li key={i}><strong>{r.label}</strong> — {r.note}</li>
                   ))}
                 </ul>
+              </div>
+            )}
+
+            {/* 이해 도장 — 모듈 하단 버튼(도장깨기와 연동, 클릭 시 색/값 변화) */}
+            {moduleStamp && (
+              <div className={`lec-stamp${earned ? ' is-earned' : ''}`}>
+                <div className="lec-stamp__info">
+                  <span className="lec-stamp__seal" aria-hidden>
+                    <Icon name={earned ? 'fa-solid fa-stamp' : 'fa-regular fa-circle-check'} />
+                  </span>
+                  <div>
+                    <strong>{earned ? '이 모듈을 이해 완료했어요' : '이 모듈, 이해되셨나요?'}</strong>
+                    <span className="lec-stamp__sub">
+                      {earned
+                        ? `도장 ${String(moduleStamp.no).padStart(2, '0')} 획득됨 · 다시 누르면 해제`
+                        : `버튼을 누르면 도장깨기에 도장 ${String(moduleStamp.no).padStart(2, '0')}이 채워집니다`}
+                    </span>
+                  </div>
+                </div>
+                <button
+                  className={`btn lec-stamp__btn ${earned ? 'btn-accent' : 'btn-primary'}`}
+                  onClick={() => toggleStamp(moduleStamp.id)}
+                >
+                  <Icon name={earned ? 'fa-solid fa-circle-check' : 'fa-solid fa-stamp'} />
+                  {earned ? '이해 완료됨' : '이해 완료 — 도장 찍기'}
+                </button>
               </div>
             )}
 

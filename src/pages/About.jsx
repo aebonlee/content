@@ -40,7 +40,7 @@ export default function About() {
 
       {/* 강사 소개 */}
       <Section eyeline="INSTRUCTOR" title="강사 소개" lead="현장에서 만들어 본 사람이 가르칩니다.">
-        <div className="grid grid-2 instructor-grid">
+        <div className={`instructor-grid${instructors.length > 1 ? ' grid grid-2' : ' instructor-grid--solo'}`}>
           {instructors.map((inst, i) => (
             <Reveal key={inst.name} className="card instructor-card" style={{ transitionDelay: `${i * 80}ms` }}>
               <span className="instructor-card__icon" aria-hidden><Icon name={inst.icon} /></span>

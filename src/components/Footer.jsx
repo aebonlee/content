@@ -12,8 +12,8 @@ export default function Footer() {
           {/* 브랜드 + 회사 정보 */}
           <div className="site-footer__brand">
             <div className="brand brand--footer">{site.brand}</div>
-            <p className="site-footer__tag">{site.tagline}</p>
-            <div className="site-footer__company">
+            <p className="site-footer__tag site-footer__deskonly">{site.tagline}</p>
+            <div className="site-footer__company site-footer__deskonly">
               <p><strong>{c.name}</strong></p>
               <p>대표이사: {c.ceo}</p>
               <p>사업자등록번호: {c.bizNumber}</p>
@@ -34,13 +34,13 @@ export default function Footer() {
           {/* 연락처 + 패밀리 사이트 */}
           <div className="site-footer__col">
             <h4 className="site-footer__h">연락처</h4>
-            <p>{c.address}</p>
+            <p className="site-footer__deskonly">{c.address}</p>
             <p><a href={`mailto:${c.email}`}>{c.email}</a></p>
-            <p>{c.phone}</p>
-            {c.kakao && <p>카카오톡: {c.kakao}</p>}
-            {c.businessHours && <p className="site-footer__hours">{c.businessHours}</p>}
+            <p className="site-footer__deskonly">{c.phone}</p>
+            {c.kakao && <p className="site-footer__deskonly">카카오톡: {c.kakao}</p>}
+            {c.businessHours && <p className="site-footer__hours site-footer__deskonly">{c.businessHours}</p>}
 
-            <div className="site-footer__family">
+            <div className="site-footer__family site-footer__deskonly">
               <select
                 defaultValue=""
                 aria-label="패밀리 사이트"

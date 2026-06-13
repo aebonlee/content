@@ -66,9 +66,10 @@ function D3() {
   )
   const chan = (y, t) => (
     <g>
+      {/* 메시지 하우스(원) → 각 채널로 뻗는 화살표 */}
+      <line x1="201" y1="165" x2="554" y2={y + 17} stroke="var(--pigment)" strokeWidth="2" markerEnd="url(#ld-arrow)" />
       <rect x="560" y={y} width="160" height="34" rx="6" fill="#fff" stroke="var(--paper-d)" />
       <text x="640" y={y + 22} textAnchor="middle" fontSize="13" fill="var(--ink)">{t}</text>
-      <line x1="500" y1="160" x2="556" y2={y + 17} stroke="var(--pigment)" strokeWidth="2" markerEnd="url(#ld-arrow)" />
     </g>
   )
   return (
@@ -80,11 +81,10 @@ function D3() {
       {step(320, '해결 S', 'var(--pigment)', '#fff')}
       <line x1="162" y1="62" x2="178" y2="62" stroke="var(--pigment)" strokeWidth="2" markerEnd="url(#ld-arrow)" />
       <line x1="302" y1="62" x2="318" y2="62" stroke="var(--pigment)" strokeWidth="2" markerEnd="url(#ld-arrow)" />
-      <text x="40" y="150" fontSize="13" className="mono" fill="var(--pigment)">원소스 멀티유즈</text>
-      <circle cx="160" cy="160" r="40" fill="var(--accent)" />
-      <text x="160" y="156" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fff">메시지</text>
-      <text x="160" y="174" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fff">하우스</text>
-      <line x1="200" y1="160" x2="556" y2="100" stroke="var(--pigment)" strokeWidth="0" />
+      <text x="40" y="116" fontSize="13" className="mono" fill="var(--pigment)">원소스 멀티유즈</text>
+      <circle cx="160" cy="165" r="38" fill="var(--accent)" />
+      <text x="160" y="161" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fff">메시지</text>
+      <text x="160" y="179" textAnchor="middle" fontSize="13" fontWeight="700" fill="#fff">하우스</text>
       {chan(96, '인스타 캡션 + 해시태그')}
       {chan(143, '블로그 도입부')}
       {chan(190, '카드뉴스 5장 문구')}

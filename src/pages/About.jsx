@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { about, course } from '../config/site'
+import { about, course, instructors } from '../config/site'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import Highlighter from '../components/Highlighter'
@@ -35,6 +35,30 @@ export default function About() {
               ))}
             </ul>
           </Reveal>
+        </div>
+      </Section>
+
+      {/* 강사 소개 */}
+      <Section eyeline="INSTRUCTOR" title="강사 소개" lead="현장에서 만들어 본 사람이 가르칩니다.">
+        <div className="grid grid-2 instructor-grid">
+          {instructors.map((inst, i) => (
+            <Reveal key={inst.name} className="card instructor-card" style={{ transitionDelay: `${i * 80}ms` }}>
+              <span className="instructor-card__icon" aria-hidden><Icon name={inst.icon} /></span>
+              <div className="instructor-card__info">
+                <h3 className="instructor-card__name">{inst.name}</h3>
+                <p className="instructor-card__role">{inst.role}</p>
+                <p className="instructor-card__affil">{inst.affiliation}</p>
+                <div className="instructor-card__tags">
+                  {inst.specialties.map((s) => (
+                    <span key={s} className="instructor-card__tag mono">{s}</span>
+                  ))}
+                </div>
+                <a href={`mailto:${inst.email}`} className="instructor-card__email mono">
+                  <Icon name="fa-regular fa-envelope" /> {inst.email}
+                </a>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </Section>
 

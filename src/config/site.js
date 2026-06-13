@@ -335,6 +335,26 @@ export const about = {
   ],
 }
 
+// 강사 소개 (About 페이지)
+export const instructors = [
+  {
+    name: '이애본',
+    role: '총괄 책임교수',
+    affiliation: '한신대학교 AI·SW대학 겸임교수 / 드림아이티비즈(DreamIT Biz) 대표',
+    specialties: ['AI 홍보·마케팅', 'AI·SW 교육', '프롬프트 엔지니어링', '바이브코딩'],
+    email: 'aebon@dreamitbiz.com',
+    icon: 'fa-solid fa-user-tie',
+  },
+  {
+    name: '정동엽',
+    role: '기술코칭 강사',
+    affiliation: '드림아이티비즈(DreamIT Biz)',
+    specialties: ['풀스택 개발', 'React/Vite', 'Supabase', 'AI 서비스 개발'],
+    email: 'radical8566@gmail.com',
+    icon: 'fa-solid fa-laptop-code',
+  },
+]
+
 // =========================================================================
 // 커뮤니티 — 정적 사이트이므로 외부 채널 안내 + FAQ 중심
 // =========================================================================

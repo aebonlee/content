@@ -19,7 +19,7 @@ main { flex: 1; }
 .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--ink); display: inline-flex; align-items: center; gap: .45rem; }
 .brand__mark { color: var(--pigment); }
 .brand--footer { font-size: 1.4rem; color: #fff; }
-.site-nav { display: flex; align-items: center; gap: 1.1rem; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.site-nav { display: flex; align-items: center; gap: 1.225rem; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .site-nav::-webkit-scrollbar { display: none; }
 .site-nav a { color: var(--ink); font-weight: 500; position: relative; white-space: nowrap; }
 .site-nav a:hover { color: var(--pigment); }

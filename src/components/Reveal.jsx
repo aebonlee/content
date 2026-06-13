@@ -10,7 +10,9 @@ export default function Reveal({ children, as: Tag = 'div', className = '', styl
       (es) => es.forEach((e) => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
       }),
-      { threshold: 0.15 }
+      // 화면에 조금이라도 들어오면 바로 보이게 — 긴 요소(예: 실습예제 10개 묶음)가
+      // 첫 화면에서 15% 기준을 못 채워 숨은 채로 남는 문제 방지.
+      { threshold: 0, rootMargin: '0px 0px -40px 0px' }
     )
     io.observe(el)
     return () => io.disconnect()

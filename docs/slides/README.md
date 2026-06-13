@@ -6,17 +6,32 @@
 
 ## ⭐ 바로 쓰는 PowerPoint 파일 — `pptx/`
 
-마크다운을 거치지 않고 **완성된 `.pptx` 7개**를 [`pptx/`](pptx/) 폴더에 넣어 뒀습니다(모듈당 16슬라이드).
-사이트와 같은 아트디렉션(다크 남색 표지·Serif 제목·형광 호박 강조·프롬프트 코드 박스)이 이미 입혀져 있어, 열어서 바로 발표하거나 필요한 부분만 손보면 됩니다.
+마크다운을 거치지 않고 **완성된 `.pptx`**를 [`pptx/`](pptx/) 폴더에 넣어 뒀습니다.
+사이트와 같은 아트디렉션(다크 남색 표지·Serif 제목·형광 호박 강조·프롬프트 코드 박스)이 입혀져 있습니다.
 
-- `pptx/M1_업무효율화의이해.pptx` … `pptx/M7_반복업무자동화.pptx`
-- 폰트는 **Noto Serif KR / Pretendard / JetBrains Mono** 기준(미설치 시 파워포인트가 대체 폰트로 표시).
+### 1) 통합 강의 덱 (권장) — `AI홍보실무_통합강의.pptx`
+
+7개 모듈을 **하나의 캠페인 내러티브**로 연결한 8시간 풀 덱(약 141슬라이드).
+러닝 케이스 **무알콜 수제 맥주 ‘Night Off’**를 하루 동안 기획→콘텐츠→이미지→페이지→자동화까지 완성합니다.
+모듈마다 다음이 더해져 있습니다:
+
+- **실제 입력 → 출력 예시** — 프롬프트를 넣으면 실제로 어떤 결과가 나오는지 샘플 출력까지
+- **좋은예 vs 나쁜예** — 막연한 프롬프트 vs 구조화한 프롬프트 등 2단 대비
+- **개념 심화 + 우리 케이스 적용 예시** — 한 줄 요약을 넘어 "왜·어떻게"까지
+- **모듈 연결 띠** — 이전 산출물 → 이번 작업 → 다음 모듈로 이어지는 흐름
+
+### 2) 모듈별 단품 덱 — `M1_*.pptx` … `M7_*.pptx`
+
+교시별로 따로 발표할 때 쓰는 모듈 1개짜리 덱(각 16슬라이드).
+
+> 폰트는 **Noto Serif KR / Pretendard / JetBrains Mono** 기준(미설치 시 파워포인트가 대체 폰트로 표시).
 
 ### 다시 생성하려면
 
 ```bash
 pip install --user python-pptx
-python3 scripts/build_slides.py   # 강의안 수정 시 slides_data.py만 고치면 7개 덱 재생성
+python3 scripts/build_full_deck.py   # 통합 강의 덱 (slides_data.py + slides_enrich.py)
+python3 scripts/build_slides.py      # 모듈별 단품 덱 7개 (slides_data.py)
 ```
 
 > 강의안 원문이 바뀌면 `scripts/slides_data.py`를 수정하고 위 명령으로 다시 빌드하세요.

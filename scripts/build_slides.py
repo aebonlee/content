@@ -60,6 +60,10 @@ def rect(slide, l, t, w, h, color, line=None):
     else:
         sp.line.color.rgb = line; sp.line.width = Pt(1)
     sp.shadow.inherit = False
+    # 도형 안 텍스트는 기본적으로 상단 정렬(오토셰이프 기본 가운데정렬 방지).
+    tf = sp.text_frame
+    tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.TOP
     return sp
 
 
@@ -173,6 +177,7 @@ class Deck:
         tf.margin_top = Inches(0.55); tf.margin_bottom = Inches(0.35)
         for i, ln in enumerate(code.split('\n')):
             p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+            p.alignment = PP_ALIGN.LEFT
             p.space_before = Pt(0); p.space_after = Pt(2); p.line_spacing = 1.15
             r = p.add_run(); r.text = ln if ln else ' '
             r.font.size = Pt(14)

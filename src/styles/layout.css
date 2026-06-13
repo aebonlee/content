@@ -202,12 +202,13 @@ main { flex: 1; }
 .site-footer__family select option { background: #1f2937; color: #e5e7eb; }
 .site-footer__bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.6); font-size: .9rem; }
 @media (max-width: 768px) {
-  /* 모바일은 간결하게 — 브랜드 + 빠른링크(2열) + 이메일 + 저작권만 */
-  .site-footer { padding: 2rem 0 1.25rem; }
-  .site-footer__content { grid-template-columns: 1fr; gap: 1.5rem; }
-  .site-footer__links { columns: 2; column-gap: 1.2rem; }
+  /* 모바일은 3줄만 — 회사명 · Family Site · 저작권 */
+  .site-footer { padding: 1.4rem 0 1rem; }
+  .site-footer__content { grid-template-columns: 1fr; gap: .7rem; margin-bottom: .9rem; }
   .site-footer__deskonly { display: none; }
-  .site-footer .brand--footer { margin-bottom: 0; }
+  .site-footer .brand--footer { margin-bottom: 0; font-size: 1.2rem; }
+  .site-footer__family { margin-top: 0; }
+  .site-footer__bottom { padding-top: .9rem; font-size: .82rem; }
 }
 
 /* --- Hero 배지 --- */

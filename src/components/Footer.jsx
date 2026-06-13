@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
 
           {/* 빠른 링크 */}
-          <div className="site-footer__col">
+          <div className="site-footer__col site-footer__deskonly">
             <h4 className="site-footer__h">빠른 링크</h4>
             <ul className="site-footer__links">
               {footerLinks.map((l) => (
@@ -33,14 +33,14 @@ export default function Footer() {
 
           {/* 연락처 + 패밀리 사이트 */}
           <div className="site-footer__col">
-            <h4 className="site-footer__h">연락처</h4>
+            <h4 className="site-footer__h site-footer__deskonly">연락처</h4>
             <p className="site-footer__deskonly">{c.address}</p>
-            <p><a href={`mailto:${c.email}`}>{c.email}</a></p>
+            <p className="site-footer__deskonly"><a href={`mailto:${c.email}`}>{c.email}</a></p>
             <p className="site-footer__deskonly">{c.phone}</p>
             {c.kakao && <p className="site-footer__deskonly">카카오톡: {c.kakao}</p>}
             {c.businessHours && <p className="site-footer__hours site-footer__deskonly">{c.businessHours}</p>}
 
-            <div className="site-footer__family site-footer__deskonly">
+            <div className="site-footer__family">
               <select
                 defaultValue=""
                 aria-label="패밀리 사이트"

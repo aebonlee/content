@@ -179,13 +179,33 @@ main { flex: 1; }
 .auth__terms { color: var(--ink-45); font-size: .75rem; margin-top: 1.3rem; }
 
 /* --- Footer --- */
-.site-footer { background: var(--ink); color: var(--wash); margin-top: 3rem; padding: 2.5rem 0 1.5rem; }
-.site-footer__inner { display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; padding-bottom: 1.5rem; border-bottom: 1px solid color-mix(in srgb, var(--wash) 18%, transparent); }
-.site-footer__tag { color: color-mix(in srgb, var(--wash) 70%, transparent); margin-top: .3rem; }
-.site-footer__links { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
-.site-footer__links a { color: var(--wash); }
+/* 푸터 — rest 스타일(다크 그라데이션) */
+.site-footer { background: linear-gradient(180deg, var(--ink) 0%, #0A0F1A 100%); color: rgba(255,255,255,.8); margin-top: 3rem; padding: 4rem 0 2rem; }
+.site-footer__content { display: grid; grid-template-columns: 2fr 1.5fr 1.3fr; gap: 3rem; margin-bottom: 2.5rem; }
+.site-footer .brand--footer { font-size: 1.4rem; color: #fff; margin-bottom: .9rem; }
+.site-footer__tag { color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 1.4rem; }
+.site-footer__company { margin-top: 1.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(255,255,255,.08); }
+.site-footer__company p { color: rgba(255,255,255,.7); font-size: .92rem; margin-bottom: .35rem; line-height: 1.7; }
+.site-footer__company strong { color: rgba(255,255,255,.95); }
+.site-footer__h { font-size: 1.02rem; margin-bottom: 1rem; color: #fff; font-weight: 600; }
+.site-footer__links { list-style: none; columns: 2; column-gap: 1.6rem; }
+.site-footer__links li { margin-bottom: .6rem; break-inside: avoid; }
+.site-footer__links a { color: rgba(255,255,255,.8); font-size: .92rem; line-height: 1.6; transition: color var(--duration) var(--ease); }
 .site-footer__links a:hover { color: var(--accent); }
-.site-footer__base { padding-top: 1.2rem; color: color-mix(in srgb, var(--wash) 55%, transparent); font-size: .8rem; }
+.site-footer__col > p { color: rgba(255,255,255,.8); font-size: .92rem; margin-bottom: .55rem; line-height: 1.7; }
+.site-footer__col > p a { color: rgba(255,255,255,.8); }
+.site-footer__col > p a:hover { color: var(--accent); }
+.site-footer__hours { margin-top: .6rem; font-style: italic; }
+.site-footer__family { margin-top: 1.2rem; }
+.site-footer__family select { width: 100%; padding: .5rem .75rem; background: rgba(255,255,255,.08); color: rgba(255,255,255,.85); border: 1px solid rgba(255,255,255,.15); border-radius: 6px; font-size: .9rem; cursor: pointer; }
+.site-footer__family select:hover { border-color: rgba(255,255,255,.3); }
+.site-footer__family select option { background: #1f2937; color: #e5e7eb; }
+.site-footer__bottom { text-align: center; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.6); font-size: .9rem; }
+@media (max-width: 768px) {
+  .site-footer { padding: 2.5rem 0 1.5rem; }
+  .site-footer__content { grid-template-columns: 1fr; gap: 2rem; }
+  .site-footer__links { columns: 1; }
+}
 
 /* --- Hero 배지 --- */
 .hero__badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.4rem; }

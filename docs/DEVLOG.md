@@ -1,5 +1,12 @@
 # 개발일지 — contents (AI 홍보 스튜디오)
 
+## 2026-06-13 · 푸터를 rest 스타일로 개편 + hello 이메일 삭제
+
+기존 단순 2단 푸터 → rest와 동일한 **다크 그라데이션 3단 구성**(브랜드+회사정보 /
+빠른 링크 2열 / 연락처+패밀리사이트) + 중앙 저작권(© 2020–현재 DreamIT Biz).
+`site.contact`(hello@dreamitbiz.com) 제거하고, `site.company`(대표·사업자번호·주소·
+이메일 aebon@·전화·카카오·영업시간)·`parentSite`·`familySites` 추가. 모바일 1열.
+
 ## 2026-06-13 · 웹 학습강의안에 핵심 프레임워크 도해(SVG) 추가
 
 `/lecture/:moduleId` 각 모듈 헤더 아래에 도해 1종씩 추가(`components/LectureDiagram.jsx`).

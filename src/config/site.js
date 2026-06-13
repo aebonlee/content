@@ -11,7 +11,25 @@ export const site = {
   description:
     '하루 만에 끝내는 AI 홍보 실무 집합 워크숍. 콘텐츠·이미지·페이지부터 반복업무 자동화까지 강사와 마주 앉아 직접 만드는 8시간 대면 과정의 학습자료.',
   url: import.meta.env.VITE_SITE_URL || 'https://contents.dreamitbiz.com',
-  contact: 'hello@dreamitbiz.com',
+  // 회사 정보 (푸터 — DreamIT Biz 공통)
+  company: {
+    name: '드림아이티비즈(DreamIT Biz)',
+    ceo: '이애본',
+    bizNumber: '601-45-20154',
+    salesNumber: '제2024-수원팔달-0584호',
+    address: '경기도 수원시 팔달구 매산로 45, 419호',
+    email: 'aebon@dreamitbiz.com',
+    phone: '010-3700-0629',
+    kakao: 'aebon',
+    businessHours: '평일: 09:00 ~ 18:00',
+  },
+  parentSite: { name: 'DreamIT Biz', url: 'https://www.dreamitbiz.com' },
+  familySites: [
+    { name: 'DreamIT Biz (본사이트)', url: 'https://www.dreamitbiz.com' },
+    { name: 'AI 프롬프트 엔지니어링', url: 'https://ai-prompt.dreamitbiz.com' },
+    { name: 'ChatGPT 학습', url: 'https://chatgpt.dreamitbiz.com' },
+    { name: '바이브코딩', url: 'https://vibe.dreamitbiz.com' },
+  ],
 }
 
 // 과정 메타 (휴넷 인재키움 — 오프라인 집합교육)

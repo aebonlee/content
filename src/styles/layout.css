@@ -488,6 +488,12 @@ main { flex: 1; }
 .ex-card__no { background: var(--pigment); color: #fff; border-radius: 6px; padding: .12rem .5rem; font-size: .78rem; font-weight: 700; flex-shrink: 0; }
 .ex-card__title { font-size: 1.12rem; flex: 1; }
 .ex-card__tool { background: var(--wash); color: var(--pigment); border: 1px solid color-mix(in srgb, var(--pigment) 20%, transparent); padding: .15rem .55rem; border-radius: 100px; font-size: .72rem; }
+/* 도구 뱃지 색 구분 — ChatGPT(초록) / Claude(클레이) 한눈에 다르게.
+   .tool-chip / .ex-card__tool 양쪽에 함께 적용. 단일 클래스 + 뒤 선언이라 기본색을 덮는다. */
+.tag-gpt { background: color-mix(in srgb, #10a37f 12%, #fff); color: #0b7a60; border-color: color-mix(in srgb, #10a37f 32%, transparent); }
+.tag-claude { background: color-mix(in srgb, #d97757 14%, #fff); color: #b1542c; border-color: color-mix(in srgb, #d97757 36%, transparent); }
+.tag-both { background: linear-gradient(90deg, color-mix(in srgb, #10a37f 12%, #fff), color-mix(in srgb, #d97757 14%, #fff)); color: var(--ink); border-color: color-mix(in srgb, var(--pigment) 22%, transparent); }
+
 .ex-card__task { color: var(--ink-70); font-size: .92rem; margin-bottom: .7rem; }
 .ex-card__task i { color: var(--pigment); margin-right: .35rem; }
 

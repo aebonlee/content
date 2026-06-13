@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { modules } from '../config/site'
 import { practiceExamples, promptElements } from '../config/examples'
+import { toolTag } from '../lib/tools'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
 
@@ -70,7 +71,7 @@ export default function Examples() {
                   <div className="ex-card__head">
                     <span className="ex-card__no mono">{String(ex.no).padStart(2, '0')}</span>
                     <h3 className="ex-card__title">{ex.title}</h3>
-                    {ex.tool && <span className="ex-card__tool mono">{ex.tool}</span>}
+                    {ex.tool && <span className={`ex-card__tool mono ${toolTag(ex.tool)}`}>{ex.tool}</span>}
                   </div>
                   <p className="ex-card__task"><Icon name="fa-solid fa-pen-ruler" /> {ex.task}</p>
                   {ex.prompt && (

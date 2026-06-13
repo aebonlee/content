@@ -1,5 +1,11 @@
 # 개발일지 — contents (AI 홍보 스튜디오)
 
+## 2026-06-13 · 도구 뱃지 ChatGPT/Claude 색 구분
+
+실습예제 뱃지(`.ex-card__tool`)와 세션 도구칩(`.tool-chip`)이 모두 같은 pigment 색이라
+ChatGPT·Claude가 한눈에 구분되지 않던 문제. `lib/tools.js`의 `toolTag()`로 이름→클래스 매핑하고
+`.tag-gpt`(초록 #10a37f) · `.tag-claude`(클레이 #d97757) · `.tag-both`(그라데이션) 추가.
+
 ## 2026-06-13 · 프롬프트 5요소 범례 — 전체 가로폭 카드로 재디자인
 
 `.lecture__head`의 `max-width: 46rem`가 5요소 그리드까지 묶어 카드가 좁게 눌려 있었음.

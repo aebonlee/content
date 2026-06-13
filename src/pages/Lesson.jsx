@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { modules } from '../config/site'
+import { toolTag } from '../lib/tools'
 import Icon from '../components/Icon'
 
 // 모든 세션을 펼쳐 이전/다음 탐색 (영상 대신 대면 학습자료)
@@ -69,7 +70,7 @@ export default function Lesson() {
         <section className="material">
           <h2 className="material__title"><Icon name="fa-solid fa-toolbox" /> 사용 도구</h2>
           <div className="material__tools">
-            {lesson.tools.map((t) => <span key={t} className="tool-chip mono">{t}</span>)}
+            {lesson.tools.map((t) => <span key={t} className={`tool-chip mono ${toolTag(t)}`}>{t}</span>)}
           </div>
         </section>
       )}

@@ -4,6 +4,7 @@ import { lectureDetails } from '../config/lectures'
 import { useStamps, toggleStamp } from '../lib/stamps'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
+import LectureDiagram from '../components/LectureDiagram'
 
 // 학습강의안 — 한 페이지 마스터-디테일.
 // 왼쪽 타임라인(교시)에서 모듈을 고르면 오른쪽에 그 교시의 상세 강의안이 바로 보인다.
@@ -62,6 +63,9 @@ export default function LectureNotes() {
                 <p className="lecmod__goal"><Icon name="fa-solid fa-flag-checkered" /> {detail.goal}</p>
               )}
             </header>
+
+            {/* 핵심 프레임워크 도해 */}
+            <LectureDiagram moduleId={m.id} />
 
             {detail?.sessions.map((s, si) => (
               <section key={s.ref} className="lecmod__session">

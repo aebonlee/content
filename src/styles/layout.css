@@ -417,6 +417,14 @@ main { flex: 1; }
 .lecmod__goal { color: var(--ink-70); font-size: 1.05rem; line-height: 1.7; background: var(--wash); border-radius: var(--radius); padding: .9rem 1.1rem; }
 .lecmod__goal i { color: var(--pigment); margin-right: .4rem; }
 
+/* 핵심 프레임워크 도해 */
+.lec-diagram { margin: 1.6rem 0 1.8rem; }
+.lec-diagram__cap { font-size: .82rem; color: var(--pigment); letter-spacing: .04em; margin-bottom: .6rem; display: flex; align-items: center; }
+.lec-diagram__frame { background: linear-gradient(180deg, #fff, var(--paper)); border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1.1rem 1.2rem; }
+.lec-diagram__svg { width: 100%; height: auto; display: block; }
+.lec-diagram__svg text { font-family: 'Pretendard', system-ui, sans-serif; }
+.lec-diagram__svg text.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: -0.01em; }
+
 .lecmod__session { background: #fff; border: 1px solid var(--paper-d); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: 1.5rem 1.6rem; margin-bottom: 1.4rem; }
 .lecmod__session-head { display: flex; align-items: baseline; gap: .7rem; padding-bottom: .8rem; margin-bottom: 1rem; border-bottom: 1px solid var(--paper-d); }
 .lecmod__session-no { color: #fff; background: var(--ink); border-radius: 6px; padding: .15rem .5rem; font-size: .78rem; flex-shrink: 0; }

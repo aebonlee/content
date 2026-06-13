@@ -26,9 +26,27 @@ main { flex: 1; }
 .site-nav a.active { color: var(--pigment); }
 .site-nav a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--accent); border-radius: 2px; }
 .site-nav__user { font-size: .85rem; color: var(--ink-45); }
+
+/* 모바일 햄버거 토글 — 데스크톱에선 숨김 */
+.site-nav__toggle { display: none; background: none; border: 0; color: var(--ink); font-size: 1.4rem; line-height: 1; padding: .3rem .4rem; cursor: pointer; }
+.site-nav__toggle:hover { color: var(--pigment); }
+
 @media (max-width: 720px) {
-  .site-header__inner { gap: 1rem; }
-  .site-nav { gap: .85rem; font-size: .92rem; justify-content: flex-end; }
+  .site-header__inner { gap: 1rem; position: relative; }
+  .site-nav__toggle { display: inline-flex; align-items: center; }
+  /* 로고 줄 아래로 펼쳐지는 드롭다운 */
+  .site-nav {
+    display: none;
+    position: absolute; top: 66px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--paper); border-bottom: 1px solid var(--paper-d);
+    box-shadow: var(--shadow-soft); padding: .4rem 0; overflow: hidden;
+  }
+  .site-nav.is-open { display: flex; }
+  .site-nav a { padding: .85rem var(--gap); font-size: 1rem; white-space: nowrap; }
+  .site-nav a:hover { background: var(--wash); }
+  .site-nav a.active { background: var(--wash); }
+  .site-nav a.active::after { display: none; }   /* 세로 목록에선 밑줄 대신 배경 */
 }
 
 /* --- Hero --- */

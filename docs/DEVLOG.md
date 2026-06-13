@@ -1,5 +1,22 @@
 # 개발일지 — contents (AI 홍보 스튜디오)
 
+## 2026-06-13 · 2차 개발 종료 요약
+
+1일 워크숍 학습자료 사이트를 강의·발표까지 쓰도록 확장하고 UI를 다듬은 세션(22커밋).
+
+- **강의안 → PowerPoint**: 마크다운 슬라이드(`docs/slides/m1~m7.md`) + python-pptx로 실제 `.pptx`
+  생성(`scripts/build_slides.py`·`build_full_deck.py`). 7모듈을 러닝케이스(Night Off)로 연결한
+  **통합 강의 덱**(141슬라이드, 입력→출력·좋은예vs나쁜예·개념심화 포함) 산출(`docs/slides/pptx/`).
+- **웹 도해**: 학습강의안에 모듈별 프레임워크 SVG 도해 7종(`LectureDiagram`).
+- **갤러리**: 결과물 SVG 일러스트(`GalleryArt`) + 종합 산출물 2종 추가(3×3) — 홈/갤러리 통일.
+- **UI 다듬기**: 실습예제 Reveal 버그·5요소 전폭 재배치·ChatGPT/Claude 뱃지 색구분·히어로
+  떠다니는 결과물·스탯 띠·상단메뉴 간격·**모바일 햄버거 메뉴**.
+- **푸터/About**: 푸터를 rest 스타일(다크 그라데이션·회사정보·패밀리사이트)로 개편 + hello 이메일
+  삭제, 모바일 3줄 간소화. About에 **강사 소개**(이애본, 전체 폭 카드) 추가.
+
+도메인 contents.dreamitbiz.com · gh-pages 자동배포. 끝.
+
+
 ## 2026-06-13 · About에 강사 소개 추가 (rest 스타일)
 
 rest의 강사 카드 구조를 contents 아트디렉션으로 이식. `site.instructors`(이애본·정동엽:

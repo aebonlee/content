@@ -39,7 +39,15 @@ main { flex: 1; }
 .hero__body { font-size: 1.08rem; color: var(--ink-70); max-width: 30rem; }
 .hero__cta { display: flex; gap: .75rem; margin-top: 1.8rem; flex-wrap: wrap; }
 .hero__art { display: flex; justify-content: center; }
-.hero__svg { width: min(100%, 420px); height: auto; filter: drop-shadow(var(--shadow-soft)); }
+.hero__svg { width: min(100%, 420px); height: auto; filter: drop-shadow(var(--shadow-soft)); overflow: visible; }
+/* 결과물 카드가 부드럽게 떠다님 — 카드마다 다른 주기/위상 */
+.hero-float { animation: heroFloat 6s ease-in-out infinite; will-change: transform; }
+.hero-float--a { animation-duration: 5.6s; }
+.hero-float--b { animation-duration: 6.6s; animation-delay: -2.2s; }
+.hero-float--c { animation-duration: 7.4s; animation-delay: -1.1s; }
+.hero-float--d { animation-duration: 4.8s; animation-delay: -3s; }
+@keyframes heroFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-11px); } }
+@media (prefers-reduced-motion: reduce) { .hero-float { animation: none; } }
 
 /* --- Section --- */
 .section { padding: clamp(3rem, 7vw, 5.5rem) 0; }

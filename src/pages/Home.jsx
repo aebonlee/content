@@ -36,30 +36,88 @@ export default function Home() {
             </div>
           </div>
           <div className="hero__art" aria-hidden>
-            {/* 팔레트 색으로만 그린 SVG — 청사진 위 새순(성장) */}
+            {/* 팔레트 SVG — 청사진 위에 결과물(콘텐츠·이미지·페이지)이 떠다니는 구성 */}
             <svg viewBox="0 0 400 400" className="hero__svg">
               <defs>
-                <linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+                <linearGradient id="heroWash" x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0" stopColor="var(--pigment)" stopOpacity="0.18" />
                   <stop offset="1" stopColor="var(--accent)" stopOpacity="0.12" />
                 </linearGradient>
+                <clipPath id="heroImg"><rect x="246" y="80" width="104" height="74" rx="7" /></clipPath>
               </defs>
-              <circle cx="200" cy="200" r="170" fill="url(#wash)" />
+              <circle cx="200" cy="200" r="175" fill="url(#heroWash)" />
               {/* 모눈(blueprint grid) */}
-              <g stroke="var(--pigment)" strokeOpacity="0.18" strokeWidth="1">
+              <g stroke="var(--pigment)" strokeOpacity="0.16" strokeWidth="1">
                 {Array.from({ length: 9 }).map((_, i) => (
-                  <line key={'h'+i} x1="40" y1={60 + i * 35} x2="360" y2={60 + i * 35} />
+                  <line key={'h' + i} x1="36" y1={56 + i * 36} x2="364" y2={56 + i * 36} />
                 ))}
                 {Array.from({ length: 9 }).map((_, i) => (
-                  <line key={'v'+i} x1={60 + i * 35} y1="40" x2={60 + i * 35} y2="360" />
+                  <line key={'v' + i} x1={56 + i * 36} y1="36" x2={56 + i * 36} y2="364" />
                 ))}
               </g>
-              {/* 성장 곡선 */}
-              <path d="M120 300 C 160 260, 180 180, 240 120" fill="none"
-                    stroke="var(--pigment)" strokeWidth="3" strokeLinecap="round" />
-              <path d="M240 120 c 10 -28, 38 -32, 52 -22 c -8 22, -34 30, -52 22 z"
-                    fill="var(--accent)" fillOpacity="0.85" />
-              <circle cx="120" cy="300" r="6" fill="var(--pigment)" />
+              {/* 떠다니는 궤도 */}
+              <circle cx="200" cy="205" r="138" fill="none" stroke="var(--pigment)" strokeOpacity="0.2" strokeWidth="1.5" strokeDasharray="3 7" />
+
+              {/* 결과물 1 — 콘텐츠 카드(좌상단) */}
+              <g className="hero-float hero-float--a">
+                <g transform="rotate(-7 116 132)">
+                  <rect x="46" y="86" width="140" height="96" rx="13" fill="#fff" stroke="var(--paper-d)" />
+                  <rect x="46" y="86" width="140" height="26" rx="13" fill="var(--pigment)" />
+                  <rect x="46" y="100" width="140" height="12" fill="var(--pigment)" />
+                  <circle cx="64" cy="99" r="6.5" fill="#fff" opacity="0.85" />
+                  <rect x="78" y="95" width="64" height="8" rx="4" fill="#fff" opacity="0.8" />
+                  <rect x="62" y="126" width="108" height="9" rx="4.5" fill="var(--wash)" />
+                  <rect x="62" y="142" width="108" height="9" rx="4.5" fill="var(--wash)" />
+                  <rect x="62" y="158" width="66" height="9" rx="4.5" fill="var(--wash)" />
+                </g>
+              </g>
+
+              {/* 결과물 2 — 이미지 카드(우상단) */}
+              <g className="hero-float hero-float--b">
+                <g transform="rotate(6 298 121)">
+                  <rect x="240" y="74" width="116" height="94" rx="13" fill="#fff" stroke="var(--paper-d)" />
+                  <g clipPath="url(#heroImg)">
+                    <rect x="246" y="80" width="104" height="74" fill="color-mix(in srgb, var(--pigment) 18%, #fff)" />
+                    <circle cx="320" cy="104" r="13" fill="var(--accent)" />
+                    <path d="M246 138 q26 -24 50 -6 q22 16 54 -6 v28 h-104 z" fill="var(--pigment)" />
+                    <path d="M246 148 q34 -16 64 0 q28 14 40 -4 v18 h-104 z" fill="var(--ink)" opacity="0.85" />
+                  </g>
+                </g>
+              </g>
+
+              {/* 결과물 3 — 페이지/랜딩 카드(하단 중앙) */}
+              <g className="hero-float hero-float--c">
+                <g transform="rotate(-3 214 290)">
+                  <rect x="126" y="226" width="176" height="128" rx="14" fill="#fff" stroke="var(--paper-d)" />
+                  <rect x="126" y="226" width="176" height="22" rx="14" fill="var(--ink)" />
+                  <rect x="126" y="240" width="176" height="8" fill="var(--ink)" />
+                  <circle cx="141" cy="237" r="3.2" fill="var(--accent)" />
+                  <circle cx="152" cy="237" r="3.2" fill="#fff" opacity="0.5" />
+                  <rect x="126" y="248" width="176" height="48" fill="color-mix(in srgb, var(--pigment) 16%, #fff)" />
+                  <rect x="142" y="262" width="74" height="10" rx="5" fill="var(--ink)" />
+                  <rect x="142" y="278" width="52" height="7" rx="3.5" fill="var(--pigment)" opacity="0.5" />
+                  <circle cx="270" cy="272" r="16" fill="var(--pigment)" opacity="0.8" />
+                  {[140, 196, 252].map((x) => (
+                    <g key={x}>
+                      <rect x={x} y="308" width="46" height="34" rx="7" fill="#fff" stroke="var(--paper-d)" />
+                      <circle cx={x + 13} cy="320" r="6" fill="var(--wash)" />
+                      <rect x={x + 8} y="330" width="30" height="5" rx="2.5" fill="var(--wash)" />
+                    </g>
+                  ))}
+                </g>
+              </g>
+
+              {/* 떠다니는 작은 강조 — 하트칩 · 반짝임 */}
+              <g className="hero-float hero-float--d">
+                <g transform="translate(196,96)">
+                  <circle r="19" fill="var(--accent)" />
+                  <path d="M0 6 C-9 -3 -14 -8 -7 -12 C-3 -14 0 -10 0 -8 C0 -10 3 -14 7 -12 C14 -8 9 -3 0 6 Z" fill="#fff" />
+                </g>
+              </g>
+              <g fill="var(--accent)" className="hero-float hero-float--d">
+                <path d="M104 232 l4 9 l9 4 l-9 4 l-4 9 l-4 -9 l-9 -4 l9 -4 z" />
+              </g>
+              <path d="M330 200 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3 z" fill="var(--pigment)" opacity="0.7" />
             </svg>
           </div>
         </div>

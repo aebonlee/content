@@ -18,21 +18,21 @@ export default function Examples() {
   return (
     <div className="container lecture">
       <header className="lecture__head">
-        <p className="eyeline mono">PRACTICE · 실습예제</p>
-        <h1 className="lecture__title">모듈별 실습 예제</h1>
-        <p className="lecture__lead">
-          {modules.length}개 모듈 × 10개 = 총 {total}개 실습 예제.
-          모든 프롬프트는 아래 <strong>프롬프트 5요소</strong>를 빠짐없이 갖춰 복붙해서 바로 쓸 수 있습니다.
-        </p>
+        <div className="lecture__head-intro">
+          <p className="eyeline mono">PRACTICE · 실습예제</p>
+          <h1 className="lecture__title">모듈별 실습 예제</h1>
+          <p className="lecture__lead">
+            {modules.length}개 모듈 × 10개 = 총 {total}개 실습 예제.
+            모든 프롬프트는 아래 <strong>프롬프트 5요소</strong>를 빠짐없이 갖춰 복붙해서 바로 쓸 수 있습니다.
+          </p>
+        </div>
         <ul className="prompt-elements">
           {promptElements.map((e, i) => (
             <li key={e.key} className="prompt-elements__item">
-              <span className="prompt-elements__no mono">{i + 1}</span>
               <span className="prompt-elements__icon" aria-hidden><Icon name={e.icon} /></span>
-              <div>
-                <strong>{e.key}</strong>
-                <span className="prompt-elements__desc">{e.desc}</span>
-              </div>
+              <span className="prompt-elements__no mono">{String(i + 1).padStart(2, '0')}</span>
+              <strong className="prompt-elements__key">{e.key}</strong>
+              <span className="prompt-elements__desc">{e.desc}</span>
             </li>
           ))}
         </ul>

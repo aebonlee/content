@@ -193,9 +193,85 @@ function ArtAutomation() {
   )
 }
 
+// g8 — 나만의 프롬프트 세트: 프롬프트 카드 + 5요소 칩 + 마법봉
+function ArtPromptSet() {
+  return (
+    <>
+      <Grid />
+      <rect x="50" y="48" width="150" height="116" rx="10" fill="color-mix(in srgb, var(--pigment) 12%, #fff)" stroke="var(--paper-d)" transform="rotate(-6 125 106)" />
+      <g transform="rotate(4 178 100)">
+        <rect x="98" y="40" width="156" height="124" rx="12" fill="#fff" stroke="var(--paper-d)" />
+        <rect x="98" y="40" width="156" height="28" rx="12" fill="var(--ink)" />
+        <rect x="98" y="56" width="156" height="12" fill="var(--ink)" />
+        <text x="114" y="59" fill="#fff" fontSize="11" fontFamily="monospace" opacity="0.9">PROMPT</text>
+        <circle cx="240" cy="54" r="4" fill="var(--accent)" />
+        {/* 5요소 칩 */}
+        {['역할', '맥락', '과제', '제약', '형식'].map((t, i) => (
+          <g key={t}>
+            <rect x={114 + (i % 3) * 46} y={82 + Math.floor(i / 3) * 26} width="40" height="19" rx="9.5"
+              fill={i === 0 ? 'var(--accent)' : 'var(--wash)'} />
+            <circle cx={123 + (i % 3) * 46} cy={91.5 + Math.floor(i / 3) * 26} r="6" fill="#fff" opacity={i === 0 ? '0.9' : '0.7'} />
+            <rect x={132 + (i % 3) * 46} y={88 + Math.floor(i / 3) * 26} width="16" height="7" rx="3.5" fill="#fff" opacity={i === 0 ? '0.85' : '0.6'} />
+          </g>
+        ))}
+        <rect x="114" y="138" width="100" height="8" rx="4" fill="var(--wash)" />
+      </g>
+      {/* 마법봉 + 반짝임 */}
+      <g transform="translate(250,138)">
+        <rect x="-4" y="-22" width="8" height="40" rx="4" fill="var(--pigment)" transform="rotate(40 0 0)" />
+        <path d="M14 -20 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 l7 -3 z" fill="var(--accent)" />
+      </g>
+    </>
+  )
+}
+
+// g9 — 홍보 자동화 포트폴리오: 폴더 + 결과물 썸네일 묶음 + 별
+function ArtPortfolio() {
+  return (
+    <>
+      <Grid />
+      {/* 폴더 뒷면 */}
+      <path d="M52 70 h70 l16 18 h110 a10 10 0 0 1 10 10 v74 a10 10 0 0 1 -10 10 h-186 a10 10 0 0 1 -10 -10 v-92 a10 10 0 0 1 10 -10 z"
+        fill="color-mix(in srgb, var(--pigment) 22%, #fff)" stroke="var(--paper-d)" />
+      {/* 썸네일 3종 */}
+      <g transform="rotate(-8 96 150)">
+        <rect x="70" y="104" width="58" height="74" rx="7" fill="#fff" stroke="var(--paper-d)" />
+        <rect x="78" y="112" width="42" height="7" rx="3.5" fill="var(--ink)" />
+        <rect x="78" y="126" width="42" height="5" rx="2.5" fill="var(--wash)" />
+        <rect x="78" y="136" width="42" height="5" rx="2.5" fill="var(--wash)" />
+        <rect x="78" y="150" width="28" height="14" rx="4" fill="var(--accent)" />
+      </g>
+      <g transform="rotate(5 168 148)">
+        <rect x="138" y="98" width="60" height="76" rx="7" fill="#fff" stroke="var(--paper-d)" />
+        <clipPath id="pfImg"><rect x="144" y="104" width="48" height="40" rx="5" /></clipPath>
+        <g clipPath="url(#pfImg)">
+          <rect x="144" y="104" width="48" height="40" fill="color-mix(in srgb, var(--pigment) 18%, #fff)" />
+          <circle cx="180" cy="116" r="8" fill="var(--accent)" />
+          <path d="M144 136 q14 -12 26 -2 q12 10 22 -4 v14 h-48 z" fill="var(--pigment)" />
+        </g>
+        <rect x="144" y="152" width="48" height="6" rx="3" fill="var(--wash)" />
+        <rect x="144" y="162" width="32" height="6" rx="3" fill="var(--wash)" />
+      </g>
+      <g transform="rotate(-2 244 150)">
+        <rect x="212" y="108" width="56" height="72" rx="7" fill="#fff" stroke="var(--paper-d)" />
+        <rect x="212" y="108" width="56" height="14" rx="7" fill="var(--ink)" />
+        <rect x="212" y="116" width="56" height="6" fill="var(--ink)" />
+        <rect x="220" y="130" width="40" height="26" rx="5" fill="color-mix(in srgb, var(--pigment) 14%, #fff)" />
+        <rect x="220" y="162" width="40" height="8" rx="4" fill="var(--accent)" />
+      </g>
+      {/* 완성 별 */}
+      <g transform="translate(252,86)">
+        <circle r="17" fill="var(--accent)" />
+        <path d="M0 -9 l2.6 5.6 l6.2 .6 l-4.7 4.1 l1.4 6 l-5.5 -3.2 l-5.5 3.2 l1.4 -6 l-4.7 -4.1 l6.2 -.6 z" fill="#fff" />
+      </g>
+    </>
+  )
+}
+
 const ART = {
   g1: ArtDiagnose, g2: ArtPlan, g3: ArtContent, g4: ArtVisual,
   g5: ArtWireframe, g6: ArtPage, g7: ArtAutomation,
+  g8: ArtPromptSet, g9: ArtPortfolio,
 }
 
 export default function GalleryArt({ id }) {

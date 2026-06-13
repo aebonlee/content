@@ -232,7 +232,7 @@ export default function Home() {
             <Reveal key={g.id} className={`gallery-card gallery-card--${g.cat}`} style={{ transitionDelay: `${i * 50}ms` }}>
               <div className={`gallery-card__cover gallery-card__cover--${g.cat}`} aria-hidden>
                 <GalleryArt id={g.id} />
-                <span className="gallery-card__cat mono">M{g.module}</span>
+                <span className="gallery-card__cat mono">{g.badge || `M${g.module}`}</span>
               </div>
               <div className="gallery-card__body">
                 <h3 className="gallery-card__title">{g.title}</h3>

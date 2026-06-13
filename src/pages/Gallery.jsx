@@ -15,7 +15,7 @@ export default function Gallery() {
     <Section
       eyeline="GALLERY"
       title="당신이 만들게 될 것들"
-      lead="7개 모듈, 7개 결과물 — 모듈마다 하나씩, 워크숍을 따라가면 손에 남습니다."
+      lead="7개 모듈의 결과물 + 프롬프트 세트·자동화 포트폴리오까지 — 워크숍을 따라가면 손에 남습니다."
     >
       <div className="gallery-grid">
         {gallery.map((g, i) => {
@@ -28,10 +28,10 @@ export default function Gallery() {
             >
               <div className={`gallery-card__cover gallery-card__cover--${g.cat}`} aria-hidden>
                 <GalleryArt id={g.id} />
-                <span className="gallery-card__cat mono">M{g.module}</span>
+                <span className="gallery-card__cat mono">{g.badge || `M${g.module}`}</span>
               </div>
               <div className="gallery-card__body">
-                <span className="gallery-card__module mono">M{g.module}. {m?.title}</span>
+                <span className="gallery-card__module mono">{g.sub || `M${g.module}. ${m?.title}`}</span>
                 <h3 className="gallery-card__title">{g.title}</h3>
                 <p className="gallery-card__desc">{g.desc}</p>
                 <div className="gallery-card__foot">

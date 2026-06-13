@@ -272,6 +272,13 @@ export const gallery = [
     desc: '섹션·CTA를 갖춘 상세·랜딩 페이지.', tool: 'Google Stitch · Framer', stamp: 's6' },
   { id: 'g7', module: 7, cat: 'page', icon: 'fa-solid fa-gears', title: '자동화 루틴',
     desc: '재사용 템플릿으로 묶은 홍보 자동화.', tool: 'Make · 노션', stamp: 's7' },
+  // 모듈을 가로지르는 종합 산출물 — 특정 교시가 아니라 과정 전체에서 쌓인다(module 대신 badge/sub).
+  { id: 'g8', cat: 'content', icon: 'fa-solid fa-wand-magic-sparkles', title: '나만의 프롬프트 세트',
+    desc: '5요소로 완성한 재사용 프롬프트 모음 — 70개 실습·SCORE 채점으로 다듬은 나만의 라이브러리.',
+    tool: 'ChatGPT · Claude', badge: 'PROMPT', sub: '프롬프트 학습 & 평가' },
+  { id: 'g9', cat: 'page', icon: 'fa-solid fa-folder-open', title: '홍보 자동화 포트폴리오',
+    desc: '콘텐츠·이미지·페이지·자동화까지 — 하루 동안 만든 결과물을 한데 묶은 포트폴리오.',
+    tool: '전체 통합', badge: 'FINAL', sub: '종합 결과물' },
 ]
 
 // =========================================================================

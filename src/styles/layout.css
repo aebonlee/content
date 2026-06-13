@@ -206,6 +206,8 @@ main { flex: 1; }
 .gallery-card__cover--image { background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, var(--paper)), var(--wash)); }
 .gallery-card__cover--page { background: linear-gradient(135deg, color-mix(in srgb, var(--ink) 14%, var(--paper)), var(--wash)); }
 .gallery-card__emoji { font-size: 2.6rem; filter: drop-shadow(0 4px 10px color-mix(in srgb, var(--ink) 18%, transparent)); }
+.gallery-card__art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; filter: drop-shadow(0 6px 14px color-mix(in srgb, var(--ink) 10%, transparent)); transition: transform var(--duration) var(--ease); }
+.gallery-card:hover .gallery-card__art { transform: scale(1.03); }
 .gallery-card__cat { position: absolute; top: .7rem; left: .7rem; background: color-mix(in srgb, #fff 80%, transparent); color: var(--ink-70); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; padding: .15rem .5rem; border-radius: 100px; }
 
 .gallery-card__body { padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; gap: .4rem; flex: 1; }

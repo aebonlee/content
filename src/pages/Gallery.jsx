@@ -3,9 +3,10 @@ import { gallery, modules, stamps } from '../config/site'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import Icon from '../components/Icon'
+import GalleryArt from '../components/GalleryArt'
 
 // 갤러리 — 7개 모듈에서 만들어 내는 결과물 쇼케이스(모듈마다 1개).
-// cover 는 팔레트 색 플레이스홀더(실제 결과물 이미지로 교체 가능).
+// cover 는 결과물을 팔레트 SVG로 그린 일러스트(GalleryArt). 실제 이미지로 교체 가능.
 const stampNo = (sid) => stamps.find((s) => s.id === sid)?.no
 const moduleOf = (no) => modules.find((m) => m.no === no)
 
@@ -26,7 +27,7 @@ export default function Gallery() {
               style={{ transitionDelay: `${i * 50}ms` }}
             >
               <div className={`gallery-card__cover gallery-card__cover--${g.cat}`} aria-hidden>
-                <span className="gallery-card__emoji"><Icon name={g.icon} /></span>
+                <GalleryArt id={g.id} />
                 <span className="gallery-card__cat mono">M{g.module}</span>
               </div>
               <div className="gallery-card__body">

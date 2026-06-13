@@ -1,5 +1,14 @@
 # 개발일지 — contents (AI 홍보 스튜디오)
 
+## 2026-06-13 · 강의안 → 실제 PowerPoint(.pptx) 자동 생성
+
+마크다운에서 더 나아가 **완성된 .pptx 7개를 직접 생성**(python-pptx). 사이트 아트디렉션
+(다크 남색 표지·Serif 제목·형광 호박·프롬프트 코드 박스)을 입힌 16:9 덱, 모듈당 16슬라이드.
+- `scripts/slides_data.py` — 강의안 데이터(lectures.js/site.js 동기화본)
+- `scripts/build_slides.py` — 스타일 빌더(표지·세션구분·개념·절차·프롬프트·실수/결과물·도구·체크·미션).
+  한글 글꼴은 latin/ea/cs 함께 지정해 의도한 폰트로 렌더.
+- 산출물: `docs/slides/pptx/M1~M7_*.pptx` (총 112슬라이드). 강의안 수정 시 데이터만 고쳐 재빌드.
+
 ## 2026-06-13 · 강의안 → PowerPoint용 슬라이드 마크다운 정리
 
 웹에 게시된 7개 모듈 강의안(`config/lectures.js` + `config/site.js` modules)을

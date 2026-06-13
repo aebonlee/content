@@ -4,7 +4,25 @@
 **7개 모듈 · 8시간 1일 워크숍**의 강의안을, 파워포인트로 옮기기 좋게 **슬라이드 단위 마크다운**으로 정리한 자료입니다.
 원본 콘텐츠는 학습사이트(`/lecture/:moduleId`, `src/config/lectures.js`)와 동일합니다.
 
-## 파일 구성
+## ⭐ 바로 쓰는 PowerPoint 파일 — `pptx/`
+
+마크다운을 거치지 않고 **완성된 `.pptx` 7개**를 [`pptx/`](pptx/) 폴더에 넣어 뒀습니다(모듈당 16슬라이드).
+사이트와 같은 아트디렉션(다크 남색 표지·Serif 제목·형광 호박 강조·프롬프트 코드 박스)이 이미 입혀져 있어, 열어서 바로 발표하거나 필요한 부분만 손보면 됩니다.
+
+- `pptx/M1_업무효율화의이해.pptx` … `pptx/M7_반복업무자동화.pptx`
+- 폰트는 **Noto Serif KR / Pretendard / JetBrains Mono** 기준(미설치 시 파워포인트가 대체 폰트로 표시).
+
+### 다시 생성하려면
+
+```bash
+pip install --user python-pptx
+python3 scripts/build_slides.py   # 강의안 수정 시 slides_data.py만 고치면 7개 덱 재생성
+```
+
+> 강의안 원문이 바뀌면 `scripts/slides_data.py`를 수정하고 위 명령으로 다시 빌드하세요.
+> 아래 마크다운(`m1~m7.md`)은 Gamma·Slidev 등 **다른 도구로 만들 때**나, claude.ai에서 직접 PPT를 생성할 때 쓰는 소스입니다.
+
+## 파일 구성 (마크다운 소스)
 
 | 파일 | 모듈 | 교시 | 분량 | 슬라이드 수(약) |
 |------|------|------|------|------|

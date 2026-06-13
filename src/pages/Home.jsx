@@ -4,6 +4,7 @@ import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import Highlighter from '../components/Highlighter'
 import Icon from '../components/Icon'
+import GalleryArt from '../components/GalleryArt'
 
 export default function Home() {
   const totalSessions = modules.reduce((s, m) => s + m.lessons.length, 0)
@@ -146,7 +147,7 @@ export default function Home() {
           {galleryPreview.map((g, i) => (
             <Reveal key={g.id} className={`gallery-card gallery-card--${g.cat}`} style={{ transitionDelay: `${i * 50}ms` }}>
               <div className={`gallery-card__cover gallery-card__cover--${g.cat}`} aria-hidden>
-                <span className="gallery-card__emoji"><Icon name={g.icon} /></span>
+                <GalleryArt id={g.id} />
                 <span className="gallery-card__cat mono">M{g.module}</span>
               </div>
               <div className="gallery-card__body">

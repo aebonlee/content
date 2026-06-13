@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { hero, features, modules, course, stamps, gallery } from '../config/site'
+import { practiceExamples } from '../config/examples'
 import Section from '../components/Section'
 import Reveal from '../components/Reveal'
 import Highlighter from '../components/Highlighter'
@@ -8,7 +9,16 @@ import GalleryArt from '../components/GalleryArt'
 
 export default function Home() {
   const totalSessions = modules.reduce((s, m) => s + m.lessons.length, 0)
+  const practiceTotal = modules.reduce((s, m) => s + (practiceExamples[m.id]?.length || 0), 0)
   const galleryPreview = gallery
+
+  // 핵심 숫자 강조 띠
+  const stats = [
+    { n: course.hours, unit: '시간', label: '대면 워크숍' },
+    { n: modules.length, unit: '개', label: '학습 모듈' },
+    { n: totalSessions, unit: '개', label: '세션 자료' },
+    { n: practiceTotal, unit: '개', label: '실습 예제' },
+  ]
 
   return (
     <>
@@ -31,8 +41,12 @@ export default function Home() {
               {course.badges.map((b) => <span key={b} className="badge mono">{b}</span>)}
             </div>
             <div className="hero__cta">
-              <Link to={hero.ctaPrimary.to} className="btn btn-accent">{hero.ctaPrimary.label}</Link>
-              <Link to={hero.ctaGhost.to} className="btn btn-ghost">{hero.ctaGhost.label}</Link>
+              <Link to={hero.ctaPrimary.to} className="btn btn-accent">
+                <Icon name="fa-solid fa-book-open" /> {hero.ctaPrimary.label}
+              </Link>
+              <Link to={hero.ctaGhost.to} className="btn btn-ghost">
+                <Icon name="fa-solid fa-stamp" /> {hero.ctaGhost.label}
+              </Link>
             </div>
           </div>
           <div className="hero__art" aria-hidden>
@@ -122,6 +136,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* --- 핵심 숫자 강조 띠 --- */}
+      <div className="container">
+        <Reveal as="ul" className="stat-band">
+          {stats.map((s) => (
+            <li key={s.label} className="stat-band__item">
+              <span className="stat-band__num mono">{s.n}<em className="stat-band__unit">{s.unit}</em></span>
+              <span className="stat-band__label">{s.label}</span>
+            </li>
+          ))}
+        </Reveal>
+      </div>
 
       {/* --- 대면 일정 안내 --- */}
       <Section eyeline="SCHEDULE" title="하루, 함께 만드는 워크숍" wash
